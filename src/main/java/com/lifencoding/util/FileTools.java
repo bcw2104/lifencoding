@@ -2,19 +2,19 @@ package com.lifencoding.util;
 
 import java.io.File;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lifencoding.fillter.ImageFileFilter;
 
 public class FileTools {
+	@Value("${file.root}")
 	private String realRootPath;
 	private String contextPath;
 	private String profilePath;
 	private String defaultProfilePath;
 
 	public FileTools() {
-		realRootPath = File.separator+"home"+File.separator+"bcw2104"+File.separator+"git"+File.separator+".metadata"+File.separator+
-				".plugins"+File.separator+"org.eclipse.wst.server.core"+File.separator+"tmp0"+File.separator+"wtpwebapps"+File.separator+"lifencoding";
 		contextPath = File.separator+"resources"+File.separator+"upload"+File.separator+"files";
 		profilePath = File.separator+"profile";
 		defaultProfilePath =  File.separator+"profile"+File.separator+"default"+File.separator+"profile.svg";

@@ -8,6 +8,10 @@ button, li {
 	color: #343a40 !important;
 }
 
+.btn-default {
+	background-color: #e4e4e4;
+}
+
 .btn-default:hover {
 	background-color: #cdcdcd;
 }

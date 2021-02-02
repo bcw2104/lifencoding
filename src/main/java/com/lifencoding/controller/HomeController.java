@@ -61,8 +61,8 @@ public class HomeController {
 				PostVO postVO = new PostVO();
 				postVO.setStart(start);
 				postVO.setEnd(end);
-				ArrayList<PostVO> postList = postService.makePostThumbnail(postService.getList(postVO));
-				ArrayList<PostVO> hotPostList = postService.makePostThumbnail(postService.getHotList());
+				ArrayList<PostVO> postList = postService.makeAllPostThumbnail(postService.getList(postVO));
+				ArrayList<PostVO> hotPostList = postService.makeAllPostThumbnail(postService.getHotList());
 
 				int count = postService.getPostCount(postVO);
 
@@ -97,6 +97,7 @@ public class HomeController {
 					model.addAttribute("postList", postList);
 					model.addAttribute("nearPost", postService.getNear(postList.get(0)));
 					request.setAttribute("currentPost", postList.get(0));
+					request.setAttribute("postTumbnail", postService.makePostThumbnail(postList.get(0).getPostContent()));
 				}
 				model.addAttribute("postCount", count);
 				model.addAttribute("content", PagePath.postview);
@@ -163,6 +164,7 @@ public class HomeController {
 				model.addAttribute("postList", postList);
 				model.addAttribute("nearPost", postService.getNear(postList.get(0)));
 				model.addAttribute("currentPost", postList.get(0));
+				model.addAttribute("postTumbnail", postService.makePostThumbnail(postList.get(0).getPostContent()));
 			}
 			model.addAttribute("postCount", count);
 			model.addAttribute("content", PagePath.postview);
@@ -213,6 +215,7 @@ public class HomeController {
 			model.addAttribute("postCount", count);
 			model.addAttribute("content", PagePath.postview);
 			model.addAttribute("currentPost", postVO);
+			model.addAttribute("postTumbnail", postService.makePostThumbnail(postVO.getPostContent()));
 			model.addAttribute("currentCategory", categoryVO);
 			model.addAttribute("currentSubCategory", subCategoryVO);
 		} else {

@@ -20,14 +20,19 @@ public class PostService implements ContentServiceImpl<PostVO>{
 	@Autowired
 	private FileTools fileTools;
 
-	public ArrayList<PostVO> makePostThumbnail(ArrayList<PostVO> list){
-		for(PostVO ele : list) {
-			String str = ele.getPostContent().replaceAll("\\<.*?\\>", "");
+	public String makePostThumbnail(String postContent){
+		String str = postContent.replaceAll("\\<.*?\\>", "");
+		str = postContent.replaceAll(" ", "");
+		if(str.length() > 400) {
+			str.substring(0, 400);
+		}
 
-			if(str.length() > 400) {
-				str.substring(0, 400);
-			}
-			ele.setPostContent(str);
+		return str;
+	}
+
+	public ArrayList<PostVO> makeAllPostThumbnail(ArrayList<PostVO> list){
+		for(PostVO ele : list) {
+			ele.setPostContent(makePostThumbnail(ele.getPostContent()));
 		}
 
 		return list;

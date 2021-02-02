@@ -10,18 +10,19 @@
 <meta name="author" content="bcw2104">
 <meta name="keywords" content="Life & Coding,lifencoding,life,coding,blog,코딩,일상,블로그">
 <meta name="description" content="일상과 배움을 기록하는 공간">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Life & Coding">
-<meta property="og:description" content="일상과 배움을 기록하는 공간" >
+<meta property="og:type" content="${requestScope.currentPost != null ? 'article':'website'}">
+<meta property="og:title" content="${requestScope.currentPost != null ? requestScope.currentPost.postTitle : 'Life & Coding'}">
+<meta property="og:description" content="${requestScope.currentPost != null ? requestScope.currentPost.postTitle : '일상과 배움을 기록하는 공간'}" >
 <meta property="og:image" content="http://www.lifencoding.com/resources/images/og_img.png">
-<meta property="og:url" content="http://www.lifencoding.com">
+<meta property="og:url" content="${requestScope.currentPost != null ? 'http://www.lifencoding.com/'requestScope.currentPost.categoryEn'/'requestScope.currentPost.postId : 'http://www.lifencoding.com'}">
 
 <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon-16x16.png">
+
 <!-- Bootstrap4 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Ckeditor4 -->
 <script src="/resources/ckeditor/ckeditor.js"></script>
