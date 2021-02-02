@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+														"HTTP://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lifencoding.mapper.AdminMapper">
+
+	<select id="select" resultType="adminVO">
+		SELECT * FROM admin_info
+	</select>
+
+	<update id="modify" parameterType="adminVO">
+		UPDATE admin_info
+		<set>
+			<if test="adminPw != null">admin_pw = #{adminPw},</if>
+			<if test="adminEmail != null">admin_email = #{adminEmail},</if>
+			<if test="adminNickname != null">admin_nickname = #{adminNickname},</if>
+			<if test="adminComment != null">admin_comment = #{adminComment}</if>
+		</set>
+	</update>
+
+</mapper>

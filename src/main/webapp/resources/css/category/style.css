@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+#categoryNav .dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown-custom > .dropdown-menu{
+	top:95% !important;
+}
+
+.dropright-custom > .dropdown-menu{
+	left: 98% !important;
+    top: -1px;
+}

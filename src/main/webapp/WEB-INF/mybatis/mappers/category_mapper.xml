@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+														"HTTP://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lifencoding.mapper.CategoryMapper">
+
+	<select id="select" resultType="categoryVO" parameterType="categoryVO">
+		SELECT * FROM category_tbl
+		<where>
+			<if test="categoryId != 0">category_id = #{categoryId}</if>
+			<if test="categoryName != null">AND category_name = #{categoryName}</if>
+		</where>
+		ORDER BY category_id ASC
+	</select>
+
+	<insert id="insert" parameterType="categoryVO">
+		insert into category_tbl(category_name) values(#{categoryName})
+	</insert>
+
+	<update id="modify" parameterType="categoryVO">
+		UPDATE category_tbl
+		<set>
+			<if test="categoryName != null">category_name = #{categoryName}</if>
+		</set>
+		<where>
+			<if test="categoryId != 0">category_id = #{categoryId}</if>
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="categoryVO">
+		DELETE FROM category_tbl
+		<where>
+			<if test="categoryId != 0">category_id = #{categoryId}</if>
+		</where>
+	</delete>
+</mapper>

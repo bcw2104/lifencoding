@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+														"HTTP://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lifencoding.mapper.GuestMapper">
+	<select id="select" resultType="guestVO" parameterType="guestVO">
+		SELECT * FROM guest_tbl WHERE visit_date &gt;= #{visitDate}
+	</select>
+
+	<select id="getCount" resultType="int" parameterType="guestVO">
+		SELECT count(guest_id) FROM guest_tbl
+			<where>
+				<if test="visitDate != null">visit_date &gt;= #{visitDate}</if>
+			</where>
+	</select>
+
+	<insert id="insert" parameterType="guestVO">
+		INSERT INTO guest_tbl(guest_ip) VALUES(#{guestIp})
+	</insert>
+</mapper>

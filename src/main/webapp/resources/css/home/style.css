@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.banner{
+	height: 100px;
+}
+
+.banner-title{
+    bottom: 0;
+    left: 10px;
+}
+
+.profile-img{
+	width:160px;
+	height: 160px;
+   	margin-right: 5px;
+}
+
+.post-item .post-content{
+	color: #5c5c5c;
+    height: 80px;
+    line-height: 20px;
+
+	word-break: break-all;
+    overflow: hidden;
+}
+
+.thumbnail{
+	width: 150px;
+	height: 150px;
+}
+
+@media screen and (max-width: 576px) {
+	.thumbnail{
+		width: 80px;
+		height: 80px;
+	}
+
+	.post-item .post-content{
+    	height: 40px;
+	}
+}
+

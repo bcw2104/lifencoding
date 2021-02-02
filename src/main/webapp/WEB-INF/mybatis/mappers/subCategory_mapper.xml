@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+														"HTTP://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lifencoding.mapper.SubCategoryMapper">
+
+	<select id="select" resultType="categoryVO" parameterType="categoryVO">
+		SELECT * FROM subcategory_tbl
+		<where>
+			<if test="categoryId != 0">category_id = #{categoryId}</if>
+			<if test="categoryName != null">AND category_name = #{categoryName}</if>
+			<if test="categoryEn != null">AND category_en = #{categoryEn}</if>
+			<if test="parent != 0">AND parent = #{parent}</if>
+		</where>
+		ORDER BY category_id ASC
+	</select>
+
+	<insert id="insert" parameterType="categoryVO">
+		insert into subcategory_tbl(category_name,category_en,parent)
+			values(#{categoryName},#{categoryEn},#{parent})
+	</insert>
+
+	<update id="modify" parameterType="categoryVO">
+		UPDATE subcategory_tbl
+		<set>
+			<if test="categoryName != null">category_name = #{categoryName},</if>
+			<if test="categoryEn != null">category_en = #{categoryEn},</if>
+			<if test="parent != 0">parent = #{parent}</if>
+		</set>
+		<where>
+			<if test="categoryId != 0">category_id = #{categoryId}</if>
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="categoryVO">
+		DELETE FROM subcategory_tbl
+		<where>
+			<if test="categoryId != 0">category_id = #{categoryId}</if>
+			<if test="categoryName != null">AND category_name = #{categoryName},</if>
+			<if test="categoryEn != null">AND category_en = #{categoryEn},</if>
+			<if test="parent != 0">AND parent = #{parent}</if>
+		</where>
+	</delete>
+</mapper>

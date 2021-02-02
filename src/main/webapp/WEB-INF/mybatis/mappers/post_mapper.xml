@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+														"HTTP://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lifencoding.mapper.PostMapper">
+
+	<select id="getCount" resultType="int" parameterType="postVO">
+		SELECT count(post_id) FROM post_tbl
+			<where>
+				<if test="postTitle != null">AND post_title LIKE '%${postTitle}%'</if>
+				<if test="categoryId != 0">AND category_id = #{categoryId}</if>
+			</where>
+	</select>
+
+	<select  id="getSequenceNum" resultType="int" >
+		SELECT IFNULL(max(post_id)+1,1) from post_tbl
+	</select>
+
+
+	<select id="select" resultType="postVO" parameterType="postVO">
+	<choose>
+		<when test="start != 0">
+			SELECT result_tbl.* FROM
+				(SELECT @rownum:=@rownum+1 AS rnum,sorted_tbl.*
+				FROM (SELECT * FROM post_tbl NATURAL JOIN subcategory_tbl
+					<where>
+						<if test="postId != 0">post_id = #{postId}</if>
+						<if test="postTitle != null">AND post_title LIKE '%${postTitle}%'</if>
+						<if test="categoryId != 0">AND category_id = #{categoryId}</if>
+					</where>
+					ORDER BY post_date desc) sorted_tbl,(SELECT @rownum:=0) tmp) result_tbl
+		 	WHERE rnum &gt;= #{start} AND rnum &lt;= #{end}
+		</when>
+		<otherwise>
+			SELECT * FROM post_tbl NATURAL JOIN subcategory_tbl
+			<where>
+				<if test="postId != 0">post_id = #{postId}</if>
+				<if test="postTitle != null">AND post_title LIKE '%${postTitle}%'</if>
+				<if test="categoryId != 0">AND category_id = #{categoryId}</if>
+			</where>
+			ORDER BY post_date desc
+		</otherwise>
+	</choose>
+	</select>
+
+	<select id="selectNear" resultType="postVO" parameterType="postVO">
+		SELECT * FROM
+			(SELECT @rownum1:=@rownum1+1 AS rnum,sorted_tbl.* FROM
+				(SELECT * FROM post_tbl NATURAL JOIN subcategory_tbl
+					<where>
+						<if test="categoryId != 0">category_id = #{categoryId}</if>
+					</where>
+					ORDER BY post_date desc) sorted_tbl, (SELECT @rownum1:=0) tmp) result_tbl
+		WHERE
+			rnum = (SELECT rnum FROM
+				(SELECT @rownum2:=@rownum2+1 AS rnum,sorted_tbl.* FROM (SELECT * FROM post_tbl
+				<where>
+					<if test="categoryId != 0">category_id = #{categoryId}</if>
+				</where>
+				ORDER BY post_date desc) sorted_tbl, (SELECT @rownum2:=0) tmp) result_tbl
+			WHERE post_id = #{postId})+1
+			OR
+			rnum = (SELECT rnum FROM
+				(SELECT @rownum3:=@rownum3+1 AS rnum,sorted_tbl.* FROM (SELECT * FROM post_tbl
+				<where>
+					<if test="categoryId != 0">category_id = #{categoryId}</if>
+				</where>
+				ORDER BY post_date desc) sorted_tbl, (SELECT @rownum3:=0) tmp) result_tbl
+			 WHERE post_id = #{postId})-1
+	</select>
+
+	<select id="selectHot" resultType="postVO">
+		SELECT * FROM
+			(SELECT  @rownum:=@rownum+1 AS rnum, sorted_tbl.* FROM
+				(SELECT * FROM
+					(SELECT * FROM post_tbl ORDER BY hits DESC) tmp1 NATURAL JOIN subcategory_tbl) sorted_tbl,
+						(SELECT @rownum:=0) tmp2) tmp3
+		WHERE rnum &lt;=5
+	</select>
+
+	<insert id="insert" parameterType="postVO">
+		INSERT INTO post_tbl VALUES(#{postId}, #{postTitle}, #{postContent}, #{postDate}, #{categoryId},#{thumbnail},0)
+	</insert>
+
+	<update id="modify" parameterType="postVO">
+		UPDATE post_tbl
+		<set>
+			<if test="postTitle != null">post_title = #{postTitle},</if>
+			<if test="postContent != null">post_content = #{postContent},</if>
+			<if test="postDate != null">post_date = #{postDate},</if>
+			<if test="categoryId != 0">category_id = #{categoryId},</if>
+			<if test="thumbnail != null">thumbnail = #{thumbnail}</if>
+		</set>
+		<where>
+			<if test="postId != 0">post_id = #{postId}</if>
+		</where>
+	</update>
+
+	<update id="addHits" parameterType="int">
+		UPDATE post_tbl SET hits = hits+1
+		<where>
+			<if test="postId != 0">post_id = #{postId}</if>
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="postVO">
+		DELETE FROM post_tbl
+		<where>
+			<if test="postId != 0">post_id = #{postId}</if>
+		</where>
+	</delete>
+
+</mapper>
