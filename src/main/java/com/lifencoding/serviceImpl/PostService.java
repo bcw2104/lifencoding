@@ -22,7 +22,6 @@ public class PostService implements ContentServiceImpl<PostVO>{
 
 	public String makePostThumbnail(String postContent){
 		String str = postContent.replaceAll("\\<.*?\\>", "");
-		str = postContent.replaceAll(" ", "");
 		if(str.length() > 400) {
 			str.substring(0, 400);
 		}
