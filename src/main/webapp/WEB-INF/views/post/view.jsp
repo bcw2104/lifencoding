@@ -93,10 +93,13 @@
 	            </div>
 	            <div class="content-title font-weight-bold py-3">${requestScope.currentPost.postTitle}</div>
 	            <div class="author mt-3">
-	                <img class="author-img border border-0 rounded-circle" id="profileImg" alt="profile"/> <span>${requestScope.adminInfo.adminNickname}</span>
-	                <span class="text-secondary ml-2 font-14">
-						<fmt:formatDate value="${requestScope.currentPost.postDate}"  pattern="yyyy-MM-dd HH:mm:ss" />
-					</span>
+	                <img class="author-img border border-0 rounded-circle position-relative" id="profileImg" alt="profile" style="top: -11px;"/>
+	                <div class="d-inline-block ml-2">
+		                <div style="line-height: 20px;">${requestScope.adminInfo.adminNickname}</div>
+		                <div class="text-secondary font-14" style="line-height: 20px;">
+							<fmt:formatDate value="${requestScope.currentPost.postDate}"  pattern="yyyy-MM-dd HH:mm" />
+						</div>
+					</div>
 					<span class="text-secondary float-right font-14">조회 수 : ${requestScope.currentPost.hits}</span>
 	            </div>
 	        </div>
