@@ -45,11 +45,12 @@ public class HomeController {
 		ArrayList<CategoryVO> categoryList = categoryService.getList();
 		ArrayList<CategoryVO> subCategoryList = subCategoryService.getList();
 
+		AdminVO adminInfo = adminService.getAdminInfo();
+		adminInfo.setAdminId(null);
+		adminInfo.setAdminPw(null);
+
 		if(request.getAttribute("content") == null) {
 			if(search==null) {
-				AdminVO adminInfo = adminService.getAdminInfo();
-				adminInfo.setAdminId(null);
-				adminInfo.setAdminPw(null);
 
 				int start=1,end = start+4;
 
@@ -71,7 +72,6 @@ public class HomeController {
 
 				model.addAttribute("totalVisit",totalVisit);
 				model.addAttribute("todayVisit", todayVisit);
-				model.addAttribute("adminInfo",adminInfo);
 				model.addAttribute("postCount", count);
 				model.addAttribute("postList",postList);
 				model.addAttribute("hotPostList",hotPostList);
@@ -127,6 +127,7 @@ public class HomeController {
 		}
 		model.addAttribute("categoryList", categoryList);
 		model.addAttribute("subCategoryList", subCategoryList);
+		model.addAttribute("adminInfo",adminInfo);
 
 		return "frame";
 	}

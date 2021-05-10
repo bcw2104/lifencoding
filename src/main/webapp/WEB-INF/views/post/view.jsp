@@ -60,9 +60,8 @@
 	                    </td>
 	                    <td class="text-right">
 	                    	<span class="text-secondary">
-		                    	<fmt:formatDate value="${n.postDate}" var="postDate" pattern="yyyy-MM-dd" />
 	                    		<c:choose>
-	                    			<c:when test="${postDate == today}">
+	                    			<c:when test="${n.postDate == today}">
 										<fmt:formatDate value="${n.postDate}" pattern="HH:mm"/>
 	                    			</c:when>
 	                    			<c:otherwise>
@@ -96,15 +95,7 @@
 	            <div class="author mt-3">
 	                <img class="author-img border border-0 rounded-circle" id="profileImg" alt="profile"/> <span>${requestScope.adminInfo.adminNickname}</span>
 	                <span class="text-secondary ml-2 font-14">
-						<fmt:formatDate value="${requestScope.currentPost.postDate}" var="postDate" pattern="yyyy-MM-dd" />
-                   		<c:choose>
-                   			<c:when test="${postDate == today}">
-								<fmt:formatDate value="${requestScope.currentPost.postDate}" pattern="HH:mm"/>
-                   			</c:when>
-                   			<c:otherwise>
-                   				<fmt:formatDate value="${requestScope.currentPost.postDate}" pattern="yyyy-MM-dd"/>
-                   			</c:otherwise>
-                   		</c:choose>
+						<fmt:formatDate value="${requestScope.currentPost.postDate}"  pattern="yyyy-MM-dd HH:mm:ss" />
 					</span>
 					<span class="text-secondary float-right font-14">조회 수 : ${requestScope.currentPost.hits}</span>
 	            </div>
