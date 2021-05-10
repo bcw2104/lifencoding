@@ -119,11 +119,11 @@
 				<hr/>
 				</c:forEach>
 				<ul class="pager row list-unstyled justify-content-center mt-3">
-			        <li class="pager-item"><a class="text-dark ${curPage-1 < 1 ? 'd-none' : ''}" href="?p=${curPage-1}">이전</a></li>
+			        <li class="pager-item ${curPage-1 < 1 ? 'd-none' : ''}"><a class="text-dark" href="?p=${curPage-1}">이전</a></li>
 			        <c:forEach begin="1" end="${maxPage}" varStatus="n">
 			        	<li class="pager-item ${curPage == n.index ? 'pager-item-active' : ''}"><a class="text-dark p-2" href="?p=${n.index}">${n.index}</a></li>
 			        </c:forEach>
-			        <li class="pager-item"><a class="text-dark ${curPage+1 > maxPage ? 'd-none' : ''}" href="?p=${curPage+1}">다음</a></li>
+			        <li class="pager-item ${curPage+1 > maxPage ? 'd-none' : ''}"><a class="text-dark" href="?p=${curPage+1}">다음</a></li>
 			    </ul>
 		    </div>
 	    </div>
