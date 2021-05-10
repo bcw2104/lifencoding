@@ -20,15 +20,15 @@
 	<select id="select" resultType="postVO" parameterType="postVO">
 	<choose>
 		<when test="start != 0">
-			SELECT result_tbl.* FROM
+			SELECT * FROM
 				(SELECT @rownum:=@rownum+1 AS rnum,sorted_tbl.*
-				FROM (SELECT * FROM post_tbl NATURAL JOIN subcategory_tbl
+				FROM (SELECT * FROM post_tbl
 					<where>
 						<if test="postId != 0">post_id = #{postId}</if>
 						<if test="postTitle != null">AND post_title LIKE '%${postTitle}%'</if>
 						<if test="categoryId != 0">AND category_id = #{categoryId}</if>
 					</where>
-					ORDER BY post_date desc) sorted_tbl,(SELECT @rownum:=0) tmp) result_tbl
+					) sorted_tbl,(SELECT @rownum:=0) tmp ORDER BY post_date desc) result_tbl NATURAL JOIN subcategory_tbl
 		 	WHERE rnum &gt;= #{start} AND rnum &lt;= #{end}
 		</when>
 		<otherwise>
@@ -73,9 +73,9 @@
 		SELECT * FROM
 			(SELECT  @rownum:=@rownum+1 AS rnum, sorted_tbl.* FROM
 				(SELECT * FROM
-					(SELECT * FROM post_tbl ORDER BY hits DESC) tmp1 NATURAL JOIN subcategory_tbl) sorted_tbl,
+					(SELECT * FROM post_tbl) tmp1 NATURAL JOIN subcategory_tbl) sorted_tbl,
 						(SELECT @rownum:=0) tmp2) tmp3
-		WHERE rnum &lt;=5
+		WHERE rnum &lt;=5 ORDER BY hits DESC
 	</select>
 
 	<insert id="insert" parameterType="postVO">

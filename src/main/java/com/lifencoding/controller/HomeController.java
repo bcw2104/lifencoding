@@ -45,7 +45,7 @@ public class HomeController {
 		ArrayList<CategoryVO> categoryList = categoryService.getList();
 		ArrayList<CategoryVO> subCategoryList = subCategoryService.getList();
 
-		if(request.getSession().getAttribute("content") == null) {
+		if(request.getAttribute("content") == null) {
 			if(search==null) {
 				AdminVO adminInfo = adminService.getAdminInfo();
 				adminInfo.setAdminId(null);

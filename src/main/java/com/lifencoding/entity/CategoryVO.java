@@ -30,11 +30,9 @@ public class CategoryVO {
 	public String getCategoryEn() {
 		return categoryEn;
 	}
-
 	public void setCategoryEn(String categoryEn) {
 		this.categoryEn = categoryEn;
 	}
-
 
 	public int getParent() {
 		return parent;
