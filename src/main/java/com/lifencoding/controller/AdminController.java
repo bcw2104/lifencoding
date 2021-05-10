@@ -60,7 +60,7 @@ public class AdminController {
 			session.removeAttribute("guest");
 			session.removeAttribute("visit");
 			session.setAttribute("admin", true);
-			session.setMaxInactiveInterval(600);
+			session.setMaxInactiveInterval(3600);
 
 			return "true";
 		}else {
