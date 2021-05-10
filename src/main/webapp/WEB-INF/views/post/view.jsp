@@ -48,15 +48,15 @@
 	        <table class="table mt-2 font-13">
 	            <thead>
 	                <tr>
-	                    <th>제목</th>
-	                    <th class="text-right">게시일</th>
+	                    <th class="d-block">제목</th>
+	                    <th class="text-right" style="width:100px">게시일</th>
 	                </tr>
 	            </thead>
 	            <tbody>
 	            	<c:forEach begin="0" end="9" items="${requestScope.postList}" var="n">
 	                <tr>
 	                    <td class="text-left">
-	                    	<a class="text-dark d-block w-100" href="/${n.categoryEn}/${n.postId}?p=${curPage}">${n.postTitle}</a>
+	                    	<a class="text-dark" href="/${n.categoryEn}/${n.postId}?p=${curPage}">${n.postTitle}</a>
 	                    </td>
 	                    <td class="text-right">
 	                    	<span class="text-secondary">
@@ -129,7 +129,7 @@
 	                        <td class="text-left">
 	                        	<a class="text-dark d-block w-100" href="/${n.categoryEn}/${n.postId}?p=${curPage}">${n.postTitle}</a>
 	                        </td>
-	                         <td class="text-right">
+	                         <td class="text-right" style="width:100px">
 	                        	<span class="text-secondary">
 	                        		<fmt:formatDate value="${n.postDate}" var="postDate" pattern="yyyy-MM-dd" />
 		                    		<c:choose>
