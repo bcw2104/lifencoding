@@ -70,12 +70,7 @@
 	</select>
 
 	<select id="selectHot" resultType="postVO">
-		SELECT * FROM
-			(SELECT  @rownum:=@rownum+1 AS rnum, sorted_tbl.* FROM
-				(SELECT * FROM
-					(SELECT * FROM post_tbl) tmp1 NATURAL JOIN subcategory_tbl) sorted_tbl,
-						(SELECT @rownum:=0) tmp2) tmp3
-		WHERE rnum &lt;=5 ORDER BY hits DESC
+		SELECT * from post_tbl NATURAL JOIN subcategory_tbl ORDER BY hits DESC LIMIT 5
 	</select>
 
 	<insert id="insert" parameterType="postVO">
