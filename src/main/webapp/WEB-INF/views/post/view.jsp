@@ -48,8 +48,8 @@
 	        <table class="table mt-2 font-13">
 	            <thead>
 	                <tr>
-	                    <th class="d-block">제목</th>
-	                    <th class="text-right" style="width:100px">게시일</th>
+	                    <th class="d-block border-0 font-15">제목</th>
+	                    <th class="text-right border-0 font-15" style="width:100px">게시일</th>
 	                </tr>
 	            </thead>
 	            <tbody>
