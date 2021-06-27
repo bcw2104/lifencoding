@@ -28,7 +28,7 @@
 					<h6>${requestScope.adminInfo.adminNickname }</h6>
 					<div class="mb-1 font-14">${requestScope.adminInfo.adminComment}</div>
 					<div class="font-14">
-						<a class="text-dark" href="https://www.facebook.com/profile.php?id=100006654306781">Facebook</a>
+						<a class="text-dark" href="https://mail.naver.com/write/popup/?orderType=new&to=bcw2104@gmail.com">Contact</a>
 						<span class="mx-2">|</span>
 						<a class="text-dark" href="https://github.com/bcw2104">Github</a>
 					</div>
