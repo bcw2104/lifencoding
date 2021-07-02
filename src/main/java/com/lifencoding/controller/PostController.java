@@ -1,7 +1,6 @@
 package com.lifencoding.controller;
 
 import java.io.File;
-import java.sql.Timestamp;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -135,7 +134,6 @@ public class PostController {
 		postVO.setPostTitle(title);
 		postVO.setPostContent(content.replace("post"+File.separator+"temp", "post"+File.separator+postId));
 		postVO.setCategoryId(categoryId);
-		postVO.setPostDate(new Timestamp(System.currentTimeMillis()));
 
 		postService.modify(postVO);
 

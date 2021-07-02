@@ -82,7 +82,6 @@
 		<set>
 			<if test="postTitle != null">post_title = #{postTitle},</if>
 			<if test="postContent != null">post_content = #{postContent},</if>
-			<if test="postDate != null">post_date = #{postDate},</if>
 			<if test="categoryId != 0">category_id = #{categoryId},</if>
 			<if test="thumbnail != null">thumbnail = #{thumbnail}</if>
 		</set>
