@@ -9,7 +9,7 @@
 
 <c:set var="maxPage" value="${requestScope.postCount%10 > 0 ? requestScope.postCount/10+1 : requestScope.postCount/10}" ></c:set>
 <c:set var="now" value="<%=new java.util.Date()%>" />
-<c:set var="curPage" value="${param.p == null ? 1 : param.p}" />
+<c:set var="curPage" value="${(param.p == null or param.p <1 or param.p >maxPage) ? 1 : param.p}" />
 <c:choose>
 	<c:when test="${param.search != null}">
 		<c:set var="search" value="search=${param.search}&" />
@@ -40,11 +40,11 @@
 		            </c:otherwise>
 	            </c:choose>
 	            <li class="position-absolute" style="right: 16px;">
-	                <a role="button" href="#" onclick="hidePostList()" id="postToggler" class="text-dark font-13">펼치기</a>
+	                <a role="button" href="#" onclick="hidePostList()" id="postToggler" class="text-dark font-13">접어두기</a>
 	            </li>
 	        </ul>
 	    </div>
-	    <div id="postList" class="d-none">
+	    <div id="postList">
 	        <table class="table mt-2 font-13">
 	            <thead>
 	                <tr>

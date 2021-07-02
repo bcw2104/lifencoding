@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="maxPage" value="${requestScope.postCount%5 > 0 ? requestScope.postCount/5+1 : requestScope.postCount/5}" ></c:set>
-<c:set var="curPage" value="${param.p == null ? 1 : param.p}" />
+<c:set var="curPage" value="${(param.p == null or param.p <1 or param.p >maxPage) ? 1 : param.p}" />
 <c:set var="now" value="<%=new java.util.Date()%>" />
 
 <link rel="stylesheet" href="/resources/css/home/style.css">

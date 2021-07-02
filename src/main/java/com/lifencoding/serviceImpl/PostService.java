@@ -20,6 +20,29 @@ public class PostService implements ContentServiceImpl<PostVO>{
 	@Autowired
 	private FileTools fileTools;
 
+	public int[] getPageRange(String p,int count,int size) {
+		int [] range = new int[2];
+
+		if (p != null) {
+			try {
+				range[0] = (Integer.parseInt(p)-1)*(size+1)+1;
+			}
+			catch(NumberFormatException e) {
+				range[0] = 1;
+			}
+
+			if(range[0] < 1 || range[0] > count)
+				range[0] = 1;
+			range[1] = range[0]+size;
+		}
+		else {
+			range[0]=1;
+			range[1] = range[0]+size;
+		}
+
+		return range;
+	}
+
 	public String makePostThumbnail(String postContent){
 		String str = postContent.replaceAll("\\<.*?\\>", "");
 		if(str.length() > 400) {

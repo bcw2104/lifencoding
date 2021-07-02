@@ -42,6 +42,9 @@ public class HomeController {
 	public String home(HttpServletRequest request, Model model,
 						@RequestParam(name = "search", required = false) String search,
 						@RequestParam(name = "p", required = false) String p) {
+
+		int [] range;
+
 		ArrayList<CategoryVO> categoryList = categoryService.getList();
 		ArrayList<CategoryVO> subCategoryList = subCategoryService.getList();
 
@@ -50,22 +53,18 @@ public class HomeController {
 		adminInfo.setAdminPw(null);
 
 		if(request.getAttribute("content") == null) {
+			PostVO postVO = new PostVO();
+
 			if(search==null) {
 
-				int start=1,end = start+4;
+				int count = postService.getPostCount(postVO);
+				range = postService.getPageRange(p,count, 4);
 
-				if (p != null) {
-					start = (Integer.parseInt(p)-1)*5+1;
-					end = start+4;
-				}
+				postVO.setStart(range[0]);
+				postVO.setEnd(range[1]);
 
-				PostVO postVO = new PostVO();
-				postVO.setStart(start);
-				postVO.setEnd(end);
 				ArrayList<PostVO> postList = postService.makeAllPostThumbnail(postService.getList(postVO));
 				ArrayList<PostVO> hotPostList = postService.makeAllPostThumbnail(postService.getHotList());
-
-				int count = postService.getPostCount(postVO);
 
 				int totalVisit = guestService.getTotalVisit();
 				int todayVisit = guestService.getTodayVisit();
@@ -77,20 +76,14 @@ public class HomeController {
 				model.addAttribute("hotPostList",hotPostList);
 			}
 			else {
-				int start=1,end = start+9;
-
-				PostVO postVO = new PostVO();
 				postVO.setPostTitle(search);
 
 				int count = postService.getPostCount(postVO);
 
-				if (p != null) {
-					start = (Integer.parseInt(p)-1)*10+1;
-					end = start+9;
-				}
+				range = postService.getPageRange(p,count,9);
 
-				postVO.setStart(start);
-				postVO.setEnd(end);
+				postVO.setStart(range[0]);
+				postVO.setEnd(range[1]);
 				ArrayList<PostVO> postList = postService.getList(postVO);
 
 				if(!postList.isEmpty()) {
@@ -117,8 +110,6 @@ public class HomeController {
 					}
 				}
 			}
-
-
 			if(flag) {
 				postService.addHits(postId);
 				postVO.setHits(postVO.getHits()+1);
@@ -136,7 +127,7 @@ public class HomeController {
 	public String category(@PathVariable String categoryEn, @RequestParam(name = "p", required = false) String p,
 			Model model, HttpServletResponse response) throws IOException {
 
-		int start=1,end = start+9;
+		int [] range;
 
 		PostVO postVO = new PostVO();
 		CategoryVO categoryVO = new CategoryVO();
@@ -152,13 +143,11 @@ public class HomeController {
 
 			int count = postService.getPostCount(postVO);
 
-			if (p != null) {
-				start = (Integer.parseInt(p)-1)*10+1;
-				end = start+9;
-			}
+			range = postService.getPageRange(p,count, 9);
 
-			postVO.setStart(start);
-			postVO.setEnd(end);
+			postVO.setStart(range[0]);
+			postVO.setEnd(range[1]);
+
 			ArrayList<PostVO> postList = postService.getList(postVO);
 
 			if(!postList.isEmpty()) {
@@ -182,7 +171,7 @@ public class HomeController {
 				@RequestParam(name = "p", required = false) String p, Model model,
 				HttpServletResponse response) throws IOException, NumberFormatException {
 
-		int start=1,end = start+9;
+		int [] range;
 
 		CategoryVO categoryVO = new CategoryVO();
 		CategoryVO subCategoryVO = new CategoryVO();
@@ -196,16 +185,15 @@ public class HomeController {
 			categoryVO.setCategoryId(subCategoryVO.getParent());
 			categoryVO = categoryService.get(categoryVO);
 
-			if (p != null) {
-				start = (Integer.parseInt(p)-1)*10+1;
-				end = start+9;
-			}
-
 			PostVO temp = new PostVO();
 			temp.setCategoryId(subCategoryVO.getCategoryId());
 			int count = postService.getPostCount(temp);
-			temp.setStart(start);
-			temp.setEnd(end);
+
+			range = postService.getPageRange(p,count, 9);
+
+			temp.setStart(range[0]);
+			temp.setEnd(range[1]);
+
 			ArrayList<PostVO> postList = postService.getList(temp);
 
 			if(!postList.isEmpty()) {
