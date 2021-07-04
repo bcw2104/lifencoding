@@ -25,7 +25,7 @@
     	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
     </header>
     <div class="container">
-    	<div class="my-5 py-5 nanumbarungothic">
+    	<div class="my-5 py-5 body-font">
     		<h1>Error!!</h1>
 			<span class="mr-2 font-18">허용되지 않는 페이지입니다.</span>
 			<a href="/"><button type="button" class="btn btn-default" style="width:80px">홈으로</button></a>

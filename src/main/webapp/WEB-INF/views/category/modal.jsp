@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <script src="/resources/javascript/category/category-modal-action.js"></script>
 
 <div id="categoryModalGroup">
 		<!-- modal -->
-		<div class="modal fade nanumbarungothic" id="categoryAddModal">
+		<div class="modal fade body-font" id="categoryAddModal">
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">
@@ -27,7 +26,7 @@
 	        </div>
 	    </div>
 
-	    <div class="modal fade nanumbarungothic" id="subCategoryAddModal">
+	    <div class="modal fade body-font" id="subCategoryAddModal">
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">
@@ -61,7 +60,7 @@
 	        </div>
 	    </div>
 
-	    <div class="modal fade nanumbarungothic" id="categoryModifyModal">
+	    <div class="modal fade body-font" id="categoryModifyModal">
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">
@@ -91,7 +90,7 @@
 	        </div>
 	    </div>
 
-	    <div class="modal fade nanumbarungothic" id="subCategoryModifyModal">
+	    <div class="modal fade body-font" id="subCategoryModifyModal">
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">
@@ -131,7 +130,7 @@
 	        </div>
 	    </div>
 
-	    <div class="modal fade nanumbarungothic" id="categoryRemoveModal">
+	    <div class="modal fade body-font" id="categoryRemoveModal">
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">
@@ -157,7 +156,7 @@
 	        </div>
 	    </div>
 
-	    <div class="modal fade nanumbarungothic" id="subCategoryRemoveModal">
+	    <div class="modal fade body-font" id="subCategoryRemoveModal">
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">

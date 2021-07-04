@@ -7,7 +7,7 @@
 <script src="/resources/javascript/admin/info/img-change-action.js"></script>
 
 <!-- modal -->
-<div class="modal fade nanumbarungothic" id="pwModal">
+<div class="modal fade body-font" id="pwModal">
     <div class="modal-dialog">
         <div class="modal-content p-5">
             <div class="modal-header">
@@ -35,7 +35,7 @@
     </div>
 </div>
 
-<div class="modal fade nanumbarungothic" id="emailModal">
+<div class="modal fade body-font" id="emailModal">
     <div class="modal-dialog">
         <div class="modal-content p-5">
             <div class="modal-header">
@@ -66,7 +66,7 @@
 
 <div class="container my-5">
 	<div class="shadow">
-	    <h4 class="mb-5 bg-dark text-white p-3 cafe24dangdanghae">마이페이지</h4>
+	    <h4 class="mb-5 bg-dark text-white p-3 head-font">마이페이지</h4>
 	    <div class="row p-sm-5 p-3">
 	        <div class="col-lg-5 col-xl-4 mb-4 d-flex flex-column justify-content-center">
 	            <img id="profileImg" alt="profile" style="width: 150px; height: 150px" class="rounded-circle mb-4">

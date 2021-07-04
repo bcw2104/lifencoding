@@ -6,7 +6,7 @@
 
 <nav class="navbar navbar-dark bg-dark navbar-expand-sm mb-3 shadow flex-wrap align-items-baseline" id="categoryNav">
     <div class="navbar-header w-sm-100">
-        <span class="navbar-brand m-0 cafe24dangdanghae">Category</span>
+        <span class="navbar-brand m-0 head-font">Category</span>
         <c:if test="${sessionScope.admin}">
             <div class="dropdown-custom dropdown d-inline-block">
                 <button type="button" class="btn btn-dark" data-toggle="dropdown" style="width: 50px">

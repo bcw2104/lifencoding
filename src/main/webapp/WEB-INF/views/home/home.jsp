@@ -9,7 +9,7 @@
 
 <link rel="stylesheet" href="/resources/css/home/style.css">
 
-<div class="container-fluid p-0 cafe24dangdanghae">
+<div class="container-fluid p-0 head-font">
 	<div class="banner position-relative bg-dark">
 		<h3 class="banner-title position-absolute text-white">일상과 배움을 기록하는 공간</h3>
    	</div>
@@ -56,7 +56,7 @@
 		<div class="col-lg-1"></div>
 		<div class="col-lg-7 p-2">
 			<div class="content-hot">
-		    	<h5 class="mb-2 bg-dark text-white p-2 cafe24dangdanghae">인기 글</h5>
+		    	<h5 class="mb-2 bg-dark text-white p-2 head-font">인기 글</h5>
 				<c:forEach items="${requestScope.hotPostList}" var="n">
 				<div class="post-item my-4 d-flex pl-2">
 					<div class="p-0 flex-fill d-flex flex-column justify-content-between">
@@ -88,7 +88,7 @@
 				</c:forEach>
 		    </div>
 			<div class="content-recent mt-5">
-				<h5 class="mb-2 bg-dark text-white p-2 cafe24dangdanghae">최신 글</h5>
+				<h5 class="mb-2 bg-dark text-white p-2 head-font">최신 글</h5>
 				<c:forEach items="${requestScope.postList}" var="n">
 				<div class="post-item my-4 d-flex pl-2">
 					<div class="p-0 flex-fill d-flex flex-column justify-content-between">

@@ -5,7 +5,7 @@
 <script src="/resources/javascript/header/ui-action.js"></script>
 
 <!-- Modal -->
-<div class="modal fade nanumbarungothic" id="loginModal">
+<div class="modal fade body-font" id="loginModal">
     <div class="modal-dialog">
         <div class="modal-content p-5">
             <div class="modal-header">
@@ -32,7 +32,7 @@
     </div>
 </div>
 
-<div class="modal fade nanumbarungothic" id="findModal">
+<div class="modal fade body-font" id="findModal">
     <div class="modal-dialog">
         <div class="modal-content p-5">
             <div class="modal-header">
@@ -57,10 +57,10 @@
 </div>
 
 
-<nav class="navbar bg-dark navbar-dark navbar-expand-sm font-14">
+<nav class="navbar bg-dark navbar-dark navbar-expand-sm font-14 head-font">
     <div class="navbar-header w-sm-100 mb-2">
         <div class="row px-3">
-            <a href="/" class="navbar-brand cafe24dangdanghae">Life &amp; Coding</a>
+            <a href="/" class="navbar-brand">Life &amp; Coding</a>
             <button type="button" class="navbar-toggler ml-auto" data-toggle="collapse" data-target="#userNav">
                 <span class="navbar-toggler-icon"></span>
             </button>

@@ -10,13 +10,13 @@
 <meta name="author" content="bcw2104">
 <meta name="keywords" content="Life & Coding,lifencoding,life,coding,blog,코딩,일상,블로그">
 <meta name="description" content="일상과 배움을 기록하는 공간">
+
 <meta property="og:type" content="${requestScope.currentPost != null ? 'article':'website'}">
 <meta property="og:title" content="${requestScope.currentPost != null ? requestScope.currentPost.postTitle : 'Life & Coding'}">
 <meta property="og:description" content="${requestScope.currentPost != null ? requestScope.currentPost.postTitle : '일상과 배움을 기록하는 공간'}" >
 <meta property="og:image" content="http://www.lifencoding.com/resources/images/og_img.png">
-<meta property="og:url" content="${requestScope.currentPost != null ? 'http://www.lifencoding.com/'requestScope.currentPost.categoryEn'/'requestScope.currentPost.postId : 'http://www.lifencoding.com'}">
 
-<link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon.png">
 
 <!-- Bootstrap4 -->
 <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
@@ -45,7 +45,7 @@
     	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
     </header>
 
-	<div class="nanumbarungothic">
+	<div class="body-font">
     	<c:choose>
     		<c:when test="${requestScope.content != null}">
     			<jsp:include page="${requestScope.content}"></jsp:include>
