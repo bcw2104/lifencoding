@@ -24,9 +24,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 
-<!-- Ckeditor4 -->
-<script src="/resources/ckeditor/ckeditor.js"></script>
-<script src="/resources/ckeditor/config.js"></script>
 
 <script src="/resources/javascript/home/ui-action.js"></script>
 

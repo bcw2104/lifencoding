@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<!-- Ckeditor4 -->
+<script src="/resources/ckeditor/ckeditor.js"></script>
+<script src="/resources/ckeditor/config.js"></script>
+
 <script src="/resources/javascript/post/content-form-action.js"></script>
 
 <div class="container my-5">
