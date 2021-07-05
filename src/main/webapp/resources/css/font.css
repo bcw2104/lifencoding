@@ -1,27 +1,15 @@
 @charset "UTF-8";
 
-@font-face {
-    font-family: 'IBMPlexSansKR-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Goyang';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Poor+Story&display=swap');
 
 .body-font{
- 	font-family: 'IBMPlexSansKR-Regular';
+ 	font-family: 'Noto Sans KR', sans-serif;
 }
 
 .head-font{
-	font-family: 'Goyang';
+	font-family: 'Poor Story', cursive;
 }
 
 input{
-	font-family: 'IBMPlexSansKR-Regular' !important;
+	font-family: 'Noto Sans KR', sans-serif;
 }

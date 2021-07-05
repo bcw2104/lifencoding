@@ -59,7 +59,7 @@
 </div>
 
 
-<nav class="navbar bg-dark navbar-dark navbar-expand-sm font-14 head-font">
+<nav class="navbar bg-dark navbar-dark navbar-expand-sm font-17 head-font">
     <div class="navbar-header w-sm-100 mb-2">
         <div class="row px-3">
             <a href="/" class="navbar-brand">Life &amp; Coding</a>
