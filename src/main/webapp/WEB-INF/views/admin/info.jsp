@@ -7,61 +7,63 @@
 <script src="/resources/javascript/admin/info/img-change-action.js"></script>
 
 <!-- modal -->
-<div class="modal fade body-font" id="pwModal">
-    <div class="modal-dialog">
-        <div class="modal-content p-5">
-            <div class="modal-header">
-                <h1 class="modal-title">비밀번호 변경</h1>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="oldPw" placeholder="현재 비밀번호">
-                        <div class="form-msg d-none" id="oldPwMsg"></div>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="newPw" placeholder="새 비밀번호">
-                        <div class="form-msg d-none" id="newPwMsg"></div>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="newPwCheck" placeholder="비밀번호 확인">
-                        <div class="form-msg d-none" id="newPwCheckMsg"></div>
-                    </div>
-                    <button type="button" class="btn btn-block btn-default" onclick="changePw()">변경하기</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<div id="infoModalGroup" class="head-font">
+	<div class="modal fade" id="pwModal">
+	    <div class="modal-dialog">
+	        <div class="modal-content p-5">
+	            <div class="modal-header">
+	                <h1 class="modal-title">비밀번호 변경</h1>
+	                <button type="button" class="close" data-dismiss="modal">&times;</button>
+	            </div>
+	            <div class="modal-body">
+	                <form>
+	                    <div class="form-group">
+	                        <input type="password" class="form-control" id="oldPw" placeholder="현재 비밀번호">
+	                        <div class="form-msg d-none" id="oldPwMsg"></div>
+	                    </div>
+	                    <div class="form-group">
+	                        <input type="password" class="form-control" id="newPw" placeholder="새 비밀번호">
+	                        <div class="form-msg d-none" id="newPwMsg"></div>
+	                    </div>
+	                    <div class="form-group">
+	                        <input type="password" class="form-control" id="newPwCheck" placeholder="비밀번호 확인">
+	                        <div class="form-msg d-none" id="newPwCheckMsg"></div>
+	                    </div>
+	                    <button type="button" class="btn btn-block btn-default" onclick="changePw()">변경하기</button>
+	                </form>
+	            </div>
+	        </div>
+	    </div>
+	</div>
 
-<div class="modal fade body-font" id="emailModal">
-    <div class="modal-dialog">
-        <div class="modal-content p-5">
-            <div class="modal-header">
-                <h1 class="modal-title">이메일 변경</h1>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="newEmail" placeholder="이메일">
-                            <div class="input-group-append">
-                                <button type="button" class="btn btn-block btn-default" onclick="sendEmail()">인증코드</button>
-                            </div>
-                            <div class="form-msg d-none" id="newEmailMsg"></div>
-                        </div>
-                    </div>
-                    <div class="form-group d-none" id="codeInputGroup">
-                        <input type="text" class="form-control" id="codeInput" placeholder="인증코드">
-                        <div class="form-msg d-none" id="codeMsg"></div>
-                    </div>
-                    <button type="button" class="btn btn-block btn-default" onclick="changeEmail()">변경하기</button>
-                </form>
-            </div>
-        </div>
-    </div>
+	<div class="modal fade" id="emailModal">
+	    <div class="modal-dialog">
+	        <div class="modal-content p-5">
+	            <div class="modal-header">
+	                <h1 class="modal-title">이메일 변경</h1>
+	                <button type="button" class="close" data-dismiss="modal">&times;</button>
+	            </div>
+	            <div class="modal-body">
+	                <form>
+	                    <div class="form-group">
+	                        <div class="input-group">
+	                            <input type="text" class="form-control" id="newEmail" placeholder="이메일">
+	                            <div class="input-group-append">
+	                                <button type="button" class="btn btn-block btn-default" onclick="sendEmail()">인증코드</button>
+	                           </div>
+	                           <div class="form-msg d-none" id="newEmailMsg"></div>
+	                       </div>
+	                   </div>
+	                   <div class="form-group d-none" id="codeInputGroup">
+	                       <input type="text" class="form-control" id="codeInput" placeholder="인증코드">
+	                       <div class="form-msg d-none" id="codeMsg"></div>
+	                   </div>
+	                   <button type="button" class="btn btn-block btn-default" onclick="changeEmail()">변경하기</button>
+	                </form>
+	            </div>
+	        </div>
+	    </div>
+	</div>
 </div>
 
 <div class="container my-5">

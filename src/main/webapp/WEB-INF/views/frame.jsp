@@ -37,7 +37,7 @@
 <title>Life &amp; Coding</title>
 </head>
 
-<body style="background-color: rgb(250, 250, 250)">
+<body style="background-color: rgb(250, 250, 250)" class="body-font">
 	<c:if test="${sessionScope.admin}">
 		<jsp:include page="/WEB-INF/views/category/modal.jsp"></jsp:include>
 	</c:if>
@@ -45,7 +45,7 @@
     	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
     </header>
 
-	<div class="body-font">
+	<div>
     	<c:choose>
     		<c:when test="${requestScope.content != null}">
     			<jsp:include page="${requestScope.content}"></jsp:include>

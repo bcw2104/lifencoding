@@ -3,9 +3,9 @@
 
 <script src="/resources/javascript/category/category-modal-action.js"></script>
 
-<div id="categoryModalGroup">
+<div id="categoryModalGroup" class="head-font">
 		<!-- modal -->
-		<div class="modal fade body-font" id="categoryAddModal">
+		<div class="modal fade" id="categoryAddModal">
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">
@@ -26,7 +26,7 @@
 	        </div>
 	    </div>
 
-	    <div class="modal fade body-font" id="subCategoryAddModal">
+	    <div class="modal fade" id="subCategoryAddModal">
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">
@@ -60,7 +60,7 @@
 	        </div>
 	    </div>
 
-	    <div class="modal fade body-font" id="categoryModifyModal">
+	    <div class="modal fade" id="categoryModifyModal">
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">
@@ -90,7 +90,7 @@
 	        </div>
 	    </div>
 
-	    <div class="modal fade body-font" id="subCategoryModifyModal">
+	    <div class="modal fade" id="subCategoryModifyModal">
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">
@@ -130,7 +130,7 @@
 	        </div>
 	    </div>
 
-	    <div class="modal fade body-font" id="categoryRemoveModal">
+	    <div class="modal fade" id="categoryRemoveModal">
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">
@@ -156,7 +156,7 @@
 	        </div>
 	    </div>
 
-	    <div class="modal fade body-font" id="subCategoryRemoveModal">
+	    <div class="modal fade" id="subCategoryRemoveModal">
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">

@@ -4,9 +4,9 @@
 
 <link rel="stylesheet" href="/resources/css/category/style.css">
 
-<nav class="navbar navbar-dark bg-dark navbar-expand-sm mb-3 shadow flex-wrap align-items-baseline" id="categoryNav">
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm mb-3 shadow flex-wrap align-items-baseline head-font" id="categoryNav">
     <div class="navbar-header w-sm-100">
-        <span class="navbar-brand m-0 head-font">Category</span>
+        <span class="navbar-brand m-0">Category</span>
         <c:if test="${sessionScope.admin}">
             <div class="dropdown-custom dropdown d-inline-block">
                 <button type="button" class="btn btn-dark" data-toggle="dropdown" style="width: 50px">

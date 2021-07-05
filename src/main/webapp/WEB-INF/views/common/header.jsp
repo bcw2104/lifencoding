@@ -5,55 +5,57 @@
 <script src="/resources/javascript/header/ui-action.js"></script>
 
 <!-- Modal -->
-<div class="modal fade body-font" id="loginModal">
-    <div class="modal-dialog">
-        <div class="modal-content p-5">
-            <div class="modal-header">
-                <h1 class="modal-title">Login</h1>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form>
-                	<input type="password" class="d-none"> <!-- fakeInput -->
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="loginId" placeholder="아이디">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="loginPw" placeholder="비밀번호">
-                        <div class="form-msg text-danger d-none" id="loginFailMsg">아이디 또는 비밀번호가 일치하지 않습니다.</div>
-                    </div>
-                    <button type="button" class="btn btn-block btn-default" onclick="login()">로그인</button>
-                </form>
-                <div class="text-center mt-3">
-                    <a href="#" class="mx-2 text-dark" data-toggle="modal" data-target="#findModal" data-dismiss="modal">계정 찾기</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<div id="headerModalGroup" class="head-font">
+	<div class="modal fade" id="loginModal">
+	    <div class="modal-dialog">
+	        <div class="modal-content p-5">
+	            <div class="modal-header">
+	                <h1 class="modal-title">Login</h1>
+	                <button type="button" class="close" data-dismiss="modal">&times;</button>
+	            </div>
+	            <div class="modal-body">
+	                <form>
+	                	<input type="password" class="d-none"> <!-- fakeInput -->
+	                    <div class="form-group">
+	                        <input type="email" class="form-control" id="loginId" placeholder="아이디">
+	                    </div>
+	                    <div class="form-group">
+	                        <input type="password" class="form-control" id="loginPw" placeholder="비밀번호">
+	                        <div class="form-msg text-danger d-none" id="loginFailMsg">아이디 또는 비밀번호가 일치하지 않습니다.</div>
+	                    </div>
+	                    <button type="button" class="btn btn-block btn-default" onclick="login()">로그인</button>
+	                </form>
+	                <div class="text-center mt-3">
+	                    <a href="#" class="mx-2 text-dark" data-toggle="modal" data-target="#findModal" data-dismiss="modal">계정 찾기</a>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
 
-<div class="modal fade body-font" id="findModal">
-    <div class="modal-dialog">
-        <div class="modal-content p-5">
-            <div class="modal-header">
-                <h1 class="modal-title">계정 찾기</h1>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-            	<div class="mb-3">계정에 등록된 이메일 주소를 입력해주세요.</div>
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="findEmail" placeholder="이메일">
-                        <div class="form-msg d-none" id="findFormMsg"></div>
-                    </div>
-                    <button type="button" class="btn btn-block btn-default" onclick="find()">찾기</button>
-                </form>
-                <div class="text-center mt-3">
-                    <a href="#" class="mx-2 text-dark" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">로그인</a>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="modal fade" id="findModal">
+	    <div class="modal-dialog">
+	        <div class="modal-content p-5">
+	            <div class="modal-header">
+	                <h1 class="modal-title">계정 찾기</h1>
+	                <button type="button" class="close" data-dismiss="modal">&times;</button>
+	            </div>
+	            <div class="modal-body">
+	            	<div class="mb-3">계정에 등록된 이메일 주소를 입력해주세요.</div>
+	                <form>
+	                    <div class="form-group">
+	                        <input type="text" class="form-control" id="findEmail" placeholder="이메일">
+	                        <div class="form-msg d-none" id="findFormMsg"></div>
+	                    </div>
+	                    <button type="button" class="btn btn-block btn-default" onclick="find()">찾기</button>
+	                </form>
+	                <div class="text-center mt-3">
+	                    <a href="#" class="mx-2 text-dark" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">로그인</a>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
 </div>
 
 
