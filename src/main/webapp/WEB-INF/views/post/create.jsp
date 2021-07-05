@@ -6,7 +6,7 @@
 <script src="/resources/ckeditor/ckeditor.js"></script>
 <script src="/resources/ckeditor/config.js"></script>
 
-<script src="/resources/javascript/post/content-form-action.js"></script>
+<script src="/resources/javascript/post/content-form-action-min.js"></script>
 
 <div class="container my-5">
 	<div class="shadow p-sm-5 p-3">

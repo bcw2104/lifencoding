@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<script src="/resources/javascript/admin/info/pw-modal-action.js"></script>
-<script src="/resources/javascript/admin/info/email-modal-action.js"></script>
-<script src="/resources/javascript/admin/info/other-change-action.js"></script>
-<script src="/resources/javascript/admin/info/img-change-action.js"></script>
+<script src="/resources/javascript/admin/info/pw-modal-action-min.js"></script>
+<script src="/resources/javascript/admin/info/email-modal-action-min.js"></script>
+<script src="/resources/javascript/admin/info/other-change-action-min.js"></script>
+<script src="/resources/javascript/admin/info/img-change-action-min.js"></script>
 
 <!-- modal -->
 <div id="infoModalGroup" class="head-font">

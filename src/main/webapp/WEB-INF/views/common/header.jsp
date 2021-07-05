@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<script src="/resources/javascript/header/ui-action.js"></script>
+<script src="/resources/javascript/header/ui-action-min.js"></script>
 
 <!-- Modal -->
 <div id="headerModalGroup" class="head-font">

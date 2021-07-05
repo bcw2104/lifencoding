@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<link rel="stylesheet" href="/resources/css/category/style.css">
+<link rel="stylesheet" href="/resources/css/category/style-min.css">
 
 <nav class="navbar navbar-dark bg-dark navbar-expand-sm mb-3 shadow flex-wrap align-items-baseline head-font" id="categoryNav">
     <div class="navbar-header w-sm-100">

@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<link rel="stylesheet" href="/resources/css/post/style.css">
+<link rel="stylesheet" href="/resources/css/post/style-min.css">
 
-<script src="/resources/javascript/post/ui-action.js"></script>
+<script src="/resources/javascript/post/ui-action-min.js"></script>
 
 <c:set var="maxPage" value="${requestScope.postCount%10 > 0 ? requestScope.postCount/10+1 : requestScope.postCount/10}" ></c:set>
 <c:set var="now" value="<%=new java.util.Date()%>" />

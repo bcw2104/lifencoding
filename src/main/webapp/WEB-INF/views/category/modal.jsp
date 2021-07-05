@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<script src="/resources/javascript/category/category-modal-action.js"></script>
+<script src="/resources/javascript/category/category-modal-action-min.js"></script>
 
 <div id="categoryModalGroup" class="head-font">
 		<!-- modal -->

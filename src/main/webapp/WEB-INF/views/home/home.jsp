@@ -7,7 +7,7 @@
 <c:set var="curPage" value="${(param.p == null or param.p <1 or param.p >maxPage) ? 1 : param.p}" />
 <c:set var="now" value="<%=new java.util.Date()%>" />
 
-<link rel="stylesheet" href="/resources/css/home/style.css">
+<link rel="stylesheet" href="/resources/css/home/style-min.css">
 
 <div class="container-fluid p-0 head-font">
 	<div class="banner position-relative bg-dark">
