@@ -29,7 +29,7 @@
 						<if test="categoryId != 0">AND category_id = #{categoryId}</if>
 					</where>
 					) sorted_tbl,(SELECT @rownum:=0) tmp ORDER BY post_date desc) result_tbl NATURAL JOIN subcategory_tbl
-		 	WHERE rnum &gt;= #{start} AND rnum &lt;= #{end}
+		 	WHERE rnum &gt;= #{start} AND rnum &lt;= #{end} ORDER BY rnum
 		</when>
 		<otherwise>
 			SELECT * FROM post_tbl NATURAL JOIN subcategory_tbl
