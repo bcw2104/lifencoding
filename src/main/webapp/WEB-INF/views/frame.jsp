@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="/resources/css/common-min.css">
 <link rel="stylesheet" href="/resources/css/font-min.css">
 
-<title>Life &amp; Coding</title>
+<title>${requestScope.currentPost != null ? requestScope.currentPost.postTitle : 'Life & Coding'}</title>
 </head>
 
 <body style="background-color: rgb(250, 250, 250)" class="body-font">
