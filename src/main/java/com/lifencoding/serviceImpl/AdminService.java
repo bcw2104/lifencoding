@@ -1,7 +1,6 @@
 package com.lifencoding.serviceImpl;
 
-import java.io.File;
-
+import org.apache.commons.net.ftp.FTPClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -9,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.lifencoding.entity.AdminVO;
 import com.lifencoding.mapper.AdminMapper;
 import com.lifencoding.util.AuthTools;
+import com.lifencoding.util.FTPManager;
 import com.lifencoding.util.FileTools;
 import com.lifencoding.util.MailTools;
 
@@ -19,7 +19,7 @@ public class AdminService{
 	@Autowired
 	private MailTools mailTools;
 	@Autowired
-	private FileTools fileTools;
+	private FTPManager manager;
 	@Autowired
 	private AdminMapper adminMapper;
 
@@ -67,22 +67,31 @@ public class AdminService{
 	}
 
 	public String getProfileImgPath() throws Exception {
-		String path = fileTools.findProfileImgPath();
+		FTPClient client = manager.connect();
+		FileTools fileTools = new FileTools(client);
 
-		if(path == null) {
-			path = fileTools.findDefaultProfileImg();
-		}
+		String path = fileTools.getProfileImgPath();
+
+		manager.disconnect(client);
 
 		return path;
 	}
 
-	public void changeProfileImg(MultipartFile mfile) throws Exception {
-		File file = fileTools.findProfileImg();
+	public void changeProfileImg(MultipartFile mfile,String fileName) throws Exception {
+		FTPClient client = manager.connect();
+		FileTools fileTools = new FileTools(client);
 
-		if(file != null) {
-			fileTools.fileRemover(file);
+		String dir = fileTools.getProfileDirPath();
+
+		String old = fileTools.getFirstFileName(dir);
+
+		if(old != null) {
+			fileTools.remove(dir, old);
 		}
-		fileTools.createProfileImg(mfile);
+
+		fileTools.createProfileImg(mfile,fileName);
+
+		manager.disconnect(client);
 	}
 
 }

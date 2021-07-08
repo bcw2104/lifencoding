@@ -1,3 +1,4 @@
+<%@page import="com.lifencoding.util.PagePath"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -10,7 +11,7 @@
         <c:if test="${sessionScope.admin}">
             <div class="dropdown-custom dropdown d-inline-block">
                 <button type="button" class="btn btn-dark" data-toggle="dropdown" style="width: 50px">
-                    <img class="w-100" alt="setting" src="/resources/images/icon_setting.png" />
+                    <img class="w-100" alt="setting" src="<%= PagePath.link %>/resources/images/icon_setting.png" />
                 </button>
                 <div class="dropdown-menu bg-dark p-0 text-center">
                     <div class="dropdown dropright dropright-custom">

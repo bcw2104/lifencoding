@@ -2,11 +2,13 @@ package com.lifencoding.controller;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FilenameUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,7 +120,15 @@ public class AdminController {
 
 	    MultipartFile mfile = filelist.getFile("newImg");
 
-	    adminService.changeProfileImg(mfile);
+	    String extension = FilenameUtils.getExtension(mfile.getOriginalFilename());
+
+		if(extension.equals("jpg") || extension.equals("jpeg") || extension.equals("png")
+				|| extension.equals("bmp") || extension.equals("svg")) {
+			String uuid = UUID.randomUUID().toString();
+			String fileName = uuid + "."+ extension;
+
+			adminService.changeProfileImg(mfile,fileName);
+		}
 	}
 
 	@PostMapping("/modify.do")

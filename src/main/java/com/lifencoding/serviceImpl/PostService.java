@@ -3,6 +3,7 @@ package com.lifencoding.serviceImpl;
 import java.io.File;
 import java.util.ArrayList;
 
+import org.apache.commons.net.ftp.FTPClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -10,15 +11,16 @@ import org.springframework.web.multipart.MultipartFile;
 import com.lifencoding.entity.PostVO;
 import com.lifencoding.mapper.PostMapper;
 import com.lifencoding.service.ContentServiceImpl;
+import com.lifencoding.util.FTPManager;
 import com.lifencoding.util.FileTools;
 
 @Service
 public class PostService implements ContentServiceImpl<PostVO>{
 
 	@Autowired
-	private PostMapper postMapper;
+	private FTPManager manager;
 	@Autowired
-	private FileTools fileTools;
+	private PostMapper postMapper;
 
 	public int[] getPageRange(String p,int count,int size) {
 		int [] range = new int[2];
@@ -115,21 +117,58 @@ public class PostService implements ContentServiceImpl<PostVO>{
 	}
 
 	public String uploadImg(int postId,String type,String fileName,MultipartFile mfile) throws Exception {
-		return fileTools.createContentFile(postId, type, fileName, mfile);
+		FTPClient client = manager.connect();
+		FileTools fileTools = new FileTools(client);
+
+		String dir = fileTools.getPostDirPath();
+
+		if(postId == 0) {
+			dir+= File.separator + "temp" + File.separator + type;
+		}
+		else {
+			dir+= File.separator + postId + File.separator + type;
+		}
+
+		String reply = fileTools.createPostTempFile(dir, fileName, mfile);
+
+		manager.disconnect(client);
+
+		return reply;
 	}
 
 	public boolean changeUploadDir(int postId) throws Exception {
-		File file = fileTools.getContentImgDir(0,null);
-		return fileTools.renameFile(file, file.getPath().replace("temp", String.valueOf(postId)));
+		FTPClient client = manager.connect();
+		FileTools fileTools = new FileTools(client);
+
+		String path= fileTools.getPostDirPath();
+
+		boolean reply = fileTools.rename(path+File.separator+"temp",path+File.separator+postId);
+
+		manager.disconnect(client);
+
+		return reply;
 	}
 
 	public void deleteThumbnail(int postId) throws Exception {
-		File file = fileTools.getContentImgDir(postId,"thumbnail");
-		fileTools.fileRemover(file);
+		FTPClient client = manager.connect();
+		FileTools fileTools = new FileTools(client);
+
+		String dir= fileTools.getPostDirPath()+File.separator+postId;
+		String fileName = "thumbnail";
+
+		fileTools.remove(dir,fileName);
+
+		manager.disconnect(client);
 	}
 	public void deleteImgFile(int postId) throws Exception {
-		File file = fileTools.getContentImgDir(postId,null);
-		fileTools.fileRemover(file);
+		FTPClient client = manager.connect();
+		FileTools fileTools = new FileTools(client);
+
+		String dir = fileTools.getPostDirPath();
+
+		fileTools.remove(dir,String.valueOf(postId));
+
+		manager.disconnect(client);
 	}
 
 }

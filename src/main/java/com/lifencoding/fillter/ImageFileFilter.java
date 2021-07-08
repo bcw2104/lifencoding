@@ -1,16 +1,18 @@
 package com.lifencoding.fillter;
 
-import java.io.File;
-import java.io.FilenameFilter;
+import org.apache.commons.net.ftp.FTPFile;
+import org.apache.commons.net.ftp.FTPFileFilter;
 
-public class ImageFileFilter implements FilenameFilter{
+public class ImageFileFilter implements FTPFileFilter{
 
 	@Override
-	public boolean accept(File file, String fileName) {
+	public boolean accept(FTPFile file) {
 		boolean isAccept = false;
 
-        if (fileName.toLowerCase().endsWith(".jpg") || fileName.toLowerCase().endsWith(".jpeg") || fileName.toLowerCase().endsWith(".png")
-        		|| fileName.toLowerCase().endsWith(".bmp") || fileName.toLowerCase().endsWith(".svg"))
+		String fileName = file.getName();
+
+        if (file.isFile() && (fileName.toLowerCase().endsWith(".jpg") || fileName.toLowerCase().endsWith(".jpeg") || fileName.toLowerCase().endsWith(".png")
+        		|| fileName.toLowerCase().endsWith(".bmp") || fileName.toLowerCase().endsWith(".svg")))
         {
             isAccept = true;
         }

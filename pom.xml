@@ -242,6 +242,13 @@
 			<version>1.4</version>
 		</dependency>
 
+		<!-- ftp -->
+		<dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>3.6</version>
+		</dependency>
+
 
 		<!-- Test -->
 		<dependency>
@@ -283,12 +290,12 @@
                 <configuration>
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
-            </plugin>
+            </plugin><!--
             <plugin>
 				<groupId>net.alchim31.maven</groupId>
 			    <artifactId>yuicompressor-maven-plugin</artifactId>
 			    <version>1.5.1</version>
-		         <executions>
+		        <executions>
 	                  <execution>
                         <goals>
                             <goal>compress</goal>
@@ -302,7 +309,7 @@
 				  	<exclude>**/*.min.css</exclude>
 				  </excludes>
 				</configuration>
-			</plugin>
+			</plugin> -->
 
         </plugins>
     </build>

@@ -1,144 +1,150 @@
 package com.lifencoding.util;
 
 import java.io.File;
+import java.io.IOException;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPFile;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lifencoding.fillter.ImageFileFilter;
 
 public class FileTools {
-	@Value("${file.root}")
-	private String realRootPath;
-	private String contextPath;
-	private String profilePath;
-	private String defaultProfilePath;
+	private String link;
+	private String root;
+	private String profileDirPath;
+	private String postDirPath;
 
-	public FileTools() {
-		contextPath = File.separator+"resources"+File.separator+"upload"+File.separator+"files";
-		profilePath = File.separator+"profile";
-		defaultProfilePath =  File.separator+"profile"+File.separator+"default"+File.separator+"profile.svg";
+	FTPClient client = null;
+
+	public FileTools(FTPClient client) {
+		this.link = PagePath.link;
+
+		this.root = "/www";
+		this.profileDirPath = "/www/resources/user/profile";
+		this.postDirPath = "/www/resources/upload/files/post";
+
+		this.client = client;
 	}
 
-	public boolean renameFile(File file,String newPath) {
-		if(file.exists())
-			return file.renameTo(new File(newPath));
-		else
-			return true;
+	public String getProfileDirPath() {
+		return profileDirPath;
 	}
 
-	public String makePostUploadPath(int postId) {
-		if(postId == 0) {
-			return contextPath+File.separator+"post"+File.separator+"temp";
-		}
-		else {
-			return contextPath+File.separator+"post"+File.separator+postId;
-		}
+	public String getPostDirPath() {
+		return postDirPath;
 	}
 
-	public File[] findImgFiles(File file) {
-		if (file.exists() && file.isDirectory()) {
-			return file.listFiles(new ImageFileFilter());
-		}
+	public boolean rename(String oldPath, String newPath) throws IOException {
+		boolean reply = client.rename(oldPath, newPath);
 
-		return null;
+		return reply;
 	}
 
-	public File[] findFiles(File file) {
-		if (file.exists() && file.isDirectory()) {
-			return file.listFiles();
+	public String getFirstFileName(String dir) throws IOException {
+		FTPFile[] files = client.listFiles(dir,new ImageFileFilter());
+
+		if(files.length > 0) {
+			return files[0].getName();
 		}
 
 		return null;
 	}
 
-	public String findProfileImgPath() {
-		String path = contextPath+profilePath;
-		File file = new File(realRootPath+path);
+	public FTPFile getFile(String dir, String fileName) throws IOException {
+		FTPFile file = null;
 
-		File[] files = findImgFiles(file);
-		if(files.length>0) {
-			file = files[0];
-			path += File.separator + file.getName();
-		}
-		else {
-			path = null;
-		}
+		FTPFile[] files = client.listFiles(dir);
 
-		return path;
-	}
-
-	public File findProfileImg() {
-		File file = new File(realRootPath+findProfileImgPath());
-
-		return file;
-	}
-
-	public String findDefaultProfileImg() {
-		String path = contextPath+defaultProfilePath;
-		File file = new File(realRootPath+path);
-
-		if(!(file.exists() && file.isFile())) {
-			path = null;
-		}
-
-		return path;
-	}
-
-	public void createFile(File file, MultipartFile multipartFile) throws Exception {
-		if (!file.exists()) {
-			file.createNewFile();
-		}
-		multipartFile.transferTo(file);
-	}
-
-	public void createProfileImg(MultipartFile multipartFile) throws Exception {
-		File file = new File(realRootPath+contextPath+profilePath+File.separator+multipartFile.getOriginalFilename());
-		createFile(file,multipartFile);
-	}
-
-	public String createContentFile(int postId, String type,String fileName,MultipartFile multipartFile) throws Exception {
-		String dirpath = makePostUploadPath(postId)+File.separator+type;
-		String path = dirpath+File.separator+fileName;
-
-		File file = new File(realRootPath+dirpath);
-		if(!file.exists()) {
-			file.mkdirs();
-		}
-
-		file = new File(realRootPath+path);
-
-		createFile(file,multipartFile);
-
-		return path;
-	}
-
-	public File getContentImgDir(int postId,String type) throws Exception {
-
-		String dirpath = makePostUploadPath(postId)+ (type!=null ? File.separator+type : "");
-
-		File file = new File(realRootPath+dirpath);
-
-		return file;
-	}
-
-	private void clearDirectory(File[] files) {
-
-		for (int i = 0; i < files.length; i++) {
-			if (files[i].isDirectory()) {
-				clearDirectory(files[i].listFiles());
+		for (FTPFile curFile : files) {
+			if (curFile.getName().equals(fileName)) {
+				file = curFile;
+				break;
 			}
-			files[i].delete();
+		}
+		return file;
+	}
+
+	public String getProfileImgPath() throws IOException {
+		String fileName = getFirstFileName(profileDirPath);
+
+		if(fileName != null) {
+			String path = profileDirPath+File.separator+getFirstFileName(profileDirPath);
+
+			return link + path.replaceFirst(root, "");
+		}
+		else {
+			return null;
 		}
 	}
 
-	public void fileRemover(File file) {
+	public void createDirectorys(String path) throws Exception {
+		String dirList[] = path.substring(1).split(File.separator);
+		String curPath = "";
 
-		if (file.exists()) {
+		for (String dir : dirList) {
+			curPath += File.separator + dir;
+
+			if (!client.changeWorkingDirectory(curPath)) {
+				client.makeDirectory(curPath);
+			}
+		}
+	}
+
+	public void createProfileImg(MultipartFile multipartFile,String fileName) throws Exception {
+		String path = profileDirPath + File.separator + fileName;
+
+		createDirectorys(profileDirPath);
+		client.storeFile(path, multipartFile.getInputStream());
+	}
+
+	public String createPostTempFile(String dir, String fileName, MultipartFile multipartFile)
+			throws Exception {
+
+		String path = dir + File.separator + fileName;
+
+		createDirectorys(dir);
+		client.storeFile(path, multipartFile.getInputStream());
+
+		return link + path.replaceFirst(root, "");
+	}
+
+	private void removeDirectory(String path) throws IOException {
+
+		FTPFile[] subFiles = client.listFiles(path);
+
+		if (subFiles != null && subFiles.length > 0) {
+			for (FTPFile curFile : subFiles) {
+				String currentFileName = curFile.getName();
+
+				if (currentFileName.equals(".") || currentFileName.equals("..")) {
+					continue;
+				}
+
+				String filePath = path + File.separator + currentFileName;
+
+				if (curFile.isDirectory()) {
+					removeDirectory(filePath);
+				} else {
+					client.deleteFile(filePath);
+				}
+			}
+		}
+		client.removeDirectory(path);
+	}
+
+	public void remove(String dir, String fileName) throws IOException {
+		FTPFile file = null;
+
+		file = getFile(dir, fileName);
+
+		if (file != null) {
 			if (file.isDirectory()) {
-				clearDirectory(file.listFiles());
+				removeDirectory(dir + File.separator + file.getName());
+			} else {
+				client.deleteFile(dir + File.separator + file.getName());
 			}
-			file.delete();
 		}
+
 	}
 }

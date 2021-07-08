@@ -13,16 +13,19 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<!-- properties -->
-	<context:property-placeholder location="/WEB-INF/properties/*.properties" />
+	<context:property-placeholder
+		location="/WEB-INF/properties/*.properties" />
 
-	 <!-- MultipartResolver -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-	    <property name="maxUploadSize" value="100000000"/>  <!-- 10MB-->
-	    <property name="maxInMemorySize" value="100000000"/> <!-- 10MB-->
+	<!-- MultipartResolver -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="100000000" />  <!-- 10MB -->
+		<property name="maxInMemorySize" value="100000000" /> <!-- 10MB -->
 	</bean>
 
 	<!-- repository -->
-	<mybatis-spring:scan base-package="com.lifencoding.mapper"/>
+	<mybatis-spring:scan
+		base-package="com.lifencoding.mapper" />
 
 	<bean class="org.apache.commons.dbcp2.BasicDataSource" id="basicDataSource">
 		<property name="driverClassName" value="${jdbc.driverClass}" />
@@ -31,19 +34,24 @@
 		<property name="password" value="${jdbc.password}" />
 	</bean>
 
-	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
-		<property name="dataSource" ref="basicDataSource"/>
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean"
+		id="sqlSessionFactoryBean">
+		<property name="dataSource" ref="basicDataSource" />
 		<property name="mapperLocations" value="/WEB-INF/mybatis/mappers/*.xml"></property>
-		<property name="configLocation" value="/WEB-INF/spring/mybatis-config.xml"/>
+		<property name="configLocation" value="/WEB-INF/spring/mybatis-config.xml" />
 	</bean>
 
-	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSessionTemplate">
+	<bean class="org.mybatis.spring.SqlSessionTemplate"
+		id="sqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactoryBean" />
 	</bean>
 
 	<!-- Util beans -->
-	<bean class="com.lifencoding.util.AuthTools" lazy-init="true"  />
-	<bean class="com.lifencoding.util.MailTools" lazy-init="true"  />
-	<bean class="com.lifencoding.util.FileTools" lazy-init="true" />
-
+	<bean class="com.lifencoding.util.AuthTools" />
+	<bean class="com.lifencoding.util.MailTools" />
+	<bean class="com.lifencoding.util.FTPManager" >
+		<constructor-arg value="${file.host}"></constructor-arg>
+		<constructor-arg value="${file.username}"></constructor-arg>
+		<constructor-arg value="${file.password}"></constructor-arg>
+	</bean>
 </beans>
