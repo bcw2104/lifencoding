@@ -291,7 +291,7 @@
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
             </plugin>
-       <!--      <plugin>
+   			<!-- <plugin>
 				<groupId>net.alchim31.maven</groupId>
 			    <artifactId>yuicompressor-maven-plugin</artifactId>
 			    <version>1.5.1</version>
@@ -308,8 +308,7 @@
 				  	<exclude>**/*.min.css</exclude>
 				  </excludes>
 				</configuration>
-			</plugin>
- -->
+			</plugin> -->
         </plugins>
     </build>
 </project>
