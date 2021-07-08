@@ -105,7 +105,7 @@
 	            </div>
 	        </div>
 	        <hr />
-	        <div class="content-body my-3">
+	        <div class="content-body mt-3 mb-5">
 	            <div class="content-post" style="overflow: auto;">${requestScope.currentPost.postContent}</div>
 	            <c:if test="${sessionScope.admin}">
 	            <div class="text-right font-16 mt-5">
