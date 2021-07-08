@@ -1,4 +1,4 @@
-<%@page import="com.lifencoding.util.PagePath"%>
+<%@page import="com.lifencoding.util.GlobalValues"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -22,7 +22,7 @@
 		<div class="col-lg-4 mb-3 p-0">
 			<div class="row m-0">
 				<div class="col-sm-4 col-lg-12 ">
-					<img class="profile-img mb-3" id="profileImg" alt="profile" />
+					<img class="profile-img mb-3" src="<%=GlobalValues.profileImg %>${requestScope.adminInfo.adminImg}" alt="profile" />
 				</div>
 				<div class="col-sm-1"></div>
 				<div class="col-8 col-sm-7 col-lg-12">
@@ -82,7 +82,7 @@
 						</div>
 					</div>
 					<c:if test="${n.thumbnail != ''}">
-		        	<img class="thumbnail ml-3" src="<%= PagePath.link %>/resources/upload/files/post/${n.postId}/thumbnail/${n.thumbnail}">
+		        	<img class="thumbnail ml-3" src="<%= GlobalValues.link %>/resources/upload/files/post/${n.postId}/thumbnail/${n.thumbnail}">
 		        	</c:if>
 				</div>
 				<hr/>
@@ -114,7 +114,7 @@
 						</div>
 					</div>
 					<c:if test="${n.thumbnail != ''}">
-		        	<img class="thumbnail ml-3" src="<%= PagePath.link %>/resources/upload/files/post/${n.postId}/thumbnail/${n.thumbnail}">
+		        	<img class="thumbnail ml-3" src="<%= GlobalValues.link %>/resources/upload/files/post/${n.postId}/thumbnail/${n.thumbnail}">
 		        	</c:if>
 				</div>
 				<hr/>

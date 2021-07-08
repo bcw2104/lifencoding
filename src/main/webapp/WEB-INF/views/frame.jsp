@@ -1,4 +1,4 @@
-<%@page import="com.lifencoding.util.PagePath"%>
+<%@page import="com.lifencoding.util.GlobalValues"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -15,19 +15,15 @@
 <meta property="og:type" content="${requestScope.currentPost != null ? 'article':'website'}">
 <meta property="og:title" content="${requestScope.currentPost != null ? requestScope.currentPost.postTitle : 'Life & Coding'}">
 <meta property="og:description" content="${requestScope.currentPost != null ? requestScope.currentPost.postTitle : '일상과 배움을 기록하는 공간'}" >
-<meta property="og:image" content="<%= PagePath.link %>/resources/images/og_img.png">
+<meta property="og:image" content="<%=GlobalValues.link%>/resources/images/og_img.png">
 
-<link rel="icon" type="image/png" sizes="16x16" href="<%= PagePath.link %>/resources/images/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="<%=GlobalValues.link%>/resources/images/favicon.png">
 
 <!-- Bootstrap4 -->
 <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
-
-
-<script src="/resources/javascript/home/ui-action-min.js"></script>
-
 
 <link rel="stylesheet" href="/resources/css/common-min.css">
 <link rel="stylesheet" href="/resources/css/font-min.css">

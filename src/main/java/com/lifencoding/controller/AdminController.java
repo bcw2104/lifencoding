@@ -24,7 +24,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.lifencoding.entity.AdminVO;
 import com.lifencoding.serviceImpl.AdminService;
-import com.lifencoding.util.PagePath;
+import com.lifencoding.util.GlobalValues;
 
 @Controller
 @RequestMapping("/admin")
@@ -101,7 +101,7 @@ public class AdminController {
 	public String info(Model model)throws Exception {
 		AdminVO adminVO = adminService.getAdminInfo();
 		model.addAttribute("admin", adminVO);
-		model.addAttribute("content", PagePath.adminInfo);
+		model.addAttribute("content", GlobalValues.adminInfo);
 
 		return "forward:/";
 	}
@@ -109,9 +109,9 @@ public class AdminController {
 	@GetMapping("/profileImg.do")
 	@ResponseBody
 	public String profileImg(HttpServletResponse response)throws Exception {
-		String path = adminService.getProfileImgPath();
+		String fileName = adminService.getAdminInfo().getAdminImg();
 
-		return path;
+		return fileName;
 	}
 
 	@PostMapping("/changeImg.do")

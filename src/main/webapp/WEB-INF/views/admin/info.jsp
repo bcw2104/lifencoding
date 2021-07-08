@@ -1,3 +1,5 @@
+<%@page import="com.lifencoding.util.GlobalValues"%>
+<%@page import="org.springframework.web.client.HttpClientErrorException.Gone"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -71,7 +73,7 @@
 	    <h4 class="mb-5 bg-dark text-white p-3 head-font">마이페이지</h4>
 	    <div class="row p-sm-5 p-3">
 	        <div class="col-lg-5 col-xl-4 mb-4 d-flex flex-column justify-content-center">
-	            <img id="profileImg" alt="profile" style="width: 150px; height: 150px" class="rounded-circle mb-4">
+	            <img src="<%=GlobalValues.profileImg %>${requestScope.admin.adminImg}" alt="profile" style="width: 150px; height: 150px" class="rounded-circle mb-4">
 	            <br />
 	            <form id="imgForm">
 	                <div class="form-group">

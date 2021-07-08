@@ -24,9 +24,9 @@ public class AdminService{
 	private AdminMapper adminMapper;
 
 	public boolean loginCheck(String id, String pw) throws Exception{
-		AdminVO adminVo = adminMapper.select();
+		AdminVO adminVO = adminMapper.select();
 
-		if(adminVo.getAdminId().equals(id) && adminVo.getAdminPw().equals(authTools.convertValuetoHash(pw)))
+		if(adminVO.getAdminId().equals(id) && adminVO.getAdminPw().equals(authTools.convertValuetoHash(pw)))
 			return true;
 		else
 			return false;
@@ -66,28 +66,20 @@ public class AdminService{
 		}
 	}
 
-	public String getProfileImgPath() throws Exception {
-		FTPClient client = manager.connect();
-		FileTools fileTools = new FileTools(client);
-
-		String path = fileTools.getProfileImgPath();
-
-		manager.disconnect(client);
-
-		return path;
-	}
-
 	public void changeProfileImg(MultipartFile mfile,String fileName) throws Exception {
 		FTPClient client = manager.connect();
 		FileTools fileTools = new FileTools(client);
 
+		String oldFileName = adminMapper.select().getAdminImg();
+
 		String dir = fileTools.getProfileDirPath();
 
-		String old = fileTools.getFirstFileName(dir);
+		fileTools.remove(dir, oldFileName);
 
-		if(old != null) {
-			fileTools.remove(dir, old);
-		}
+		AdminVO adminVO = new AdminVO();
+
+		adminVO.setAdminImg(fileName);
+		adminMapper.modify(adminVO);
 
 		fileTools.createProfileImg(mfile,fileName);
 

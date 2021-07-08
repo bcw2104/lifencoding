@@ -7,8 +7,6 @@ import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.lifencoding.fillter.ImageFileFilter;
-
 public class FileTools {
 	private String link;
 	private String root;
@@ -18,7 +16,7 @@ public class FileTools {
 	FTPClient client = null;
 
 	public FileTools(FTPClient client) {
-		this.link = PagePath.link;
+		this.link = GlobalValues.link;
 
 		this.root = "/www";
 		this.profileDirPath = "/www/resources/user/profile";
@@ -41,16 +39,6 @@ public class FileTools {
 		return reply;
 	}
 
-	public String getFirstFileName(String dir) throws IOException {
-		FTPFile[] files = client.listFiles(dir,new ImageFileFilter());
-
-		if(files.length > 0) {
-			return files[0].getName();
-		}
-
-		return null;
-	}
-
 	public FTPFile getFile(String dir, String fileName) throws IOException {
 		FTPFile file = null;
 
@@ -63,19 +51,6 @@ public class FileTools {
 			}
 		}
 		return file;
-	}
-
-	public String getProfileImgPath() throws IOException {
-		String fileName = getFirstFileName(profileDirPath);
-
-		if(fileName != null) {
-			String path = profileDirPath+File.separator+getFirstFileName(profileDirPath);
-
-			return link + path.replaceFirst(root, "");
-		}
-		else {
-			return null;
-		}
 	}
 
 	public void createDirectorys(String path) throws Exception {

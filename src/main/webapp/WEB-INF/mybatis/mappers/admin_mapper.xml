@@ -15,6 +15,7 @@
 			<if test="adminEmail != null">admin_email = #{adminEmail},</if>
 			<if test="adminNickname != null">admin_nickname = #{adminNickname},</if>
 			<if test="adminComment != null">admin_comment = #{adminComment}</if>
+			<if test="adminImg != null">admin_img = #{adminImg}</if>
 		</set>
 	</update>
 

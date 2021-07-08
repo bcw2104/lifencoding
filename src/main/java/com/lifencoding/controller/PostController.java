@@ -22,7 +22,7 @@ import com.lifencoding.entity.CategoryVO;
 import com.lifencoding.entity.PostVO;
 import com.lifencoding.serviceImpl.PostService;
 import com.lifencoding.serviceImpl.SubCategoryService;
-import com.lifencoding.util.PagePath;
+import com.lifencoding.util.GlobalValues;
 
 @Controller
 @RequestMapping("/post")
@@ -36,7 +36,7 @@ public class PostController {
 	@GetMapping("/create")
 	public String create(Model model) throws Exception {
 		postService.deleteImgFile(0);
-		model.addAttribute("content", PagePath.postcreate);
+		model.addAttribute("content", GlobalValues.postCreate);
 		return "forward:/";
 	}
 
@@ -49,7 +49,7 @@ public class PostController {
 		postVO = postService.get(postVO);
 
 		model.addAttribute("currentPost",postVO);
-		model.addAttribute("content",PagePath.postmodify);
+		model.addAttribute("content",GlobalValues.postModify);
 
 		return "forward:/";
 	}

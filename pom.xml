@@ -290,8 +290,8 @@
                 <configuration>
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
-            </plugin><!--
-            <plugin>
+            </plugin>
+       <!--      <plugin>
 				<groupId>net.alchim31.maven</groupId>
 			    <artifactId>yuicompressor-maven-plugin</artifactId>
 			    <version>1.5.1</version>
@@ -303,14 +303,13 @@
 	                 </execution>
 		        </executions>
                 <configuration>
-			      <nosuffix>true</nosuffix>
 			      <excludes>
 				  	<exclude>**/*.min.js</exclude>
 				  	<exclude>**/*.min.css</exclude>
 				  </excludes>
 				</configuration>
-			</plugin> -->
-
+			</plugin>
+ -->
         </plugins>
     </build>
 </project>

@@ -21,7 +21,7 @@ import com.lifencoding.serviceImpl.CategoryService;
 import com.lifencoding.serviceImpl.GuestService;
 import com.lifencoding.serviceImpl.PostService;
 import com.lifencoding.serviceImpl.SubCategoryService;
-import com.lifencoding.util.PagePath;
+import com.lifencoding.util.GlobalValues;
 
 @Controller
 public class HomeController {
@@ -93,7 +93,7 @@ public class HomeController {
 					request.setAttribute("postTumbnail", postService.makePostThumbnail(postList.get(0).getPostContent()));
 				}
 				model.addAttribute("postCount", count);
-				model.addAttribute("content", PagePath.postview);
+				model.addAttribute("content", GlobalValues.postView);
 			}
 		}
 		//조회수 증가
@@ -157,7 +157,7 @@ public class HomeController {
 				model.addAttribute("postTumbnail", postService.makePostThumbnail(postList.get(0).getPostContent()));
 			}
 			model.addAttribute("postCount", count);
-			model.addAttribute("content", PagePath.postview);
+			model.addAttribute("content", GlobalValues.postView);
 			model.addAttribute("currentCategory", categoryVO);
 			model.addAttribute("currentSubCategory", subCategoryVO);
 		} else {
@@ -202,7 +202,7 @@ public class HomeController {
 
 			model.addAttribute("nearPost", postService.getNear(postVO));
 			model.addAttribute("postCount", count);
-			model.addAttribute("content", PagePath.postview);
+			model.addAttribute("content", GlobalValues.postView);
 			model.addAttribute("currentPost", postVO);
 			model.addAttribute("postTumbnail", postService.makePostThumbnail(postVO.getPostContent()));
 			model.addAttribute("currentCategory", categoryVO);

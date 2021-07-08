@@ -53,22 +53,9 @@ function uploadFile(target){
 	}
 }
 
-
-function getProfileImage(){
-	$.ajax({
-		url: "/admin/profileImg.do",
-		type:"get",
-		success: function(path) {
-			$("#profileImg").attr("src",path);
-		}
-	});
-}
-
 $(document).ready(function() {
 
 	$("#newimg").change(function() {
 		uploadFile(this);
 	});
-
-	getProfileImage();
 });

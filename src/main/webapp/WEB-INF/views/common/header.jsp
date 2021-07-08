@@ -1,4 +1,4 @@
-<%@page import="com.lifencoding.util.PagePath"%>
+<%@page import="com.lifencoding.util.GlobalValues"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -74,7 +74,7 @@
 			<input type="text" id="search" class="form-control h-100" placeholder="제목 검색"/>
             <div class="input-group-append h-100">
                <button type="button" class="btn btn-default p-0" onclick="search()" style="width: 30px">
-              		<img alt="search" src="<%= PagePath.link %>/resources/images/icon_search.png" style="width: 19px; height: 15px;" />
+              		<img alt="search" src="<%=GlobalValues.link%>/resources/images/icon_search.png" style="width: 19px; height: 15px;" />
             	</button>
         	</div>
         </div>

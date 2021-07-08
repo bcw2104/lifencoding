@@ -1,3 +1,4 @@
+<%@page import="com.lifencoding.util.GlobalValues"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -93,7 +94,7 @@
 	            </div>
 	            <div class="content-title font-weight-bold py-3">${requestScope.currentPost.postTitle}</div>
 	            <div class="author mt-3">
-	                <img class="author-img border border-0 rounded-circle position-relative" id="profileImg" alt="profile" style="top: -11px;"/>
+	                <img class="author-img border border-0 rounded-circle position-relative" src="<%=GlobalValues.profileImg %>${requestScope.adminInfo.adminImg}" alt="profile" style="top: -11px;"/>
 	                <div class="d-inline-block ml-2">
 		                <div style="line-height: 20px;">${requestScope.adminInfo.adminNickname}</div>
 		                <div class="text-secondary font-14" style="line-height: 20px;">
