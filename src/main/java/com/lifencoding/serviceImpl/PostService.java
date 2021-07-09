@@ -45,18 +45,19 @@ public class PostService implements ContentServiceImpl<PostVO>{
 		return range;
 	}
 
-	public String makePostThumbnail(String postContent){
-		String str = postContent.replaceAll("\\<.*?\\>", "");
-		if(str.length() > 400) {
-			str.substring(0, 400);
+	public String makePostThumbnail(String postContent,int len){
+		String str = postContent.replaceAll("\\<.*?\\>", "").replaceAll("&nbsp;","");
+
+		if(str.length() > len) {
+			str = str.substring(0, len);
 		}
 
 		return str;
 	}
 
-	public ArrayList<PostVO> makeAllPostThumbnail(ArrayList<PostVO> list){
+	public ArrayList<PostVO> makeAllPostThumbnail(ArrayList<PostVO> list,int len){
 		for(PostVO ele : list) {
-			ele.setPostContent(makePostThumbnail(ele.getPostContent()));
+			ele.setPostContent(makePostThumbnail(ele.getPostContent(),len));
 		}
 
 		return list;

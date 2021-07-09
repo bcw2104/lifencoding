@@ -63,8 +63,8 @@ public class HomeController {
 				postVO.setStart(range[0]);
 				postVO.setEnd(range[1]);
 
-				ArrayList<PostVO> postList = postService.makeAllPostThumbnail(postService.getList(postVO));
-				ArrayList<PostVO> hotPostList = postService.makeAllPostThumbnail(postService.getHotList());
+				ArrayList<PostVO> postList = postService.makeAllPostThumbnail(postService.getList(postVO),300);
+				ArrayList<PostVO> hotPostList = postService.makeAllPostThumbnail(postService.getHotList(),300);
 
 				int totalVisit = guestService.getTotalVisit();
 				int todayVisit = guestService.getTodayVisit();
@@ -90,13 +90,13 @@ public class HomeController {
 					model.addAttribute("postList", postList);
 					model.addAttribute("nearPost", postService.getNear(postList.get(0)));
 					request.setAttribute("currentPost", postList.get(0));
-					request.setAttribute("postTumbnail", postService.makePostThumbnail(postList.get(0).getPostContent()));
+					request.setAttribute("postTumbnail", postService.makePostThumbnail(postList.get(0).getPostContent(),160));
 				}
 				model.addAttribute("postCount", count);
 				model.addAttribute("content", GlobalValues.postView);
 			}
 		}
-		//조회수 증가
+
 		if(request.getAttribute("currentPost") != null && request.getSession().getAttribute("guest") != null) {
 			PostVO postVO = (PostVO) request.getAttribute("currentPost");
 			int postId = postVO.getPostId();
@@ -154,7 +154,7 @@ public class HomeController {
 				model.addAttribute("postList", postList);
 				model.addAttribute("nearPost", postService.getNear(postList.get(0)));
 				model.addAttribute("currentPost", postList.get(0));
-				model.addAttribute("postTumbnail", postService.makePostThumbnail(postList.get(0).getPostContent()));
+				model.addAttribute("postTumbnail", postService.makePostThumbnail(postList.get(0).getPostContent(),160));
 			}
 			model.addAttribute("postCount", count);
 			model.addAttribute("content", GlobalValues.postView);
@@ -204,7 +204,7 @@ public class HomeController {
 			model.addAttribute("postCount", count);
 			model.addAttribute("content", GlobalValues.postView);
 			model.addAttribute("currentPost", postVO);
-			model.addAttribute("postTumbnail", postService.makePostThumbnail(postVO.getPostContent()));
+			model.addAttribute("postTumbnail", postService.makePostThumbnail(postVO.getPostContent(),160));
 			model.addAttribute("currentCategory", categoryVO);
 			model.addAttribute("currentSubCategory", subCategoryVO);
 		} else {
