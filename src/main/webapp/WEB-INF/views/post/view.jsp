@@ -27,7 +27,7 @@
 
 	<div class="p-sm-5 p-3 shadow">
 	    <div class="p-2 font-15">
-	    	<h6 class="mb-3">최신 글 (${requestScope.postCount})</h6>
+	    	<div class="mb-3 font-17">최신 글 (${requestScope.postCount})</div>
 	        <ul class="breadcrumb position-relative">
 	        	<c:choose>
 		            <c:when test="${requestScope.currentCategory != null && requestScope.currentSubCategory != null}">
@@ -92,7 +92,7 @@
 	            <div class="mb-3">
 	                <a class="text-dark font-weight-bold" href="/${requestScope.currentPost.categoryEn}">${requestScope.currentPost.categoryName}</a>
 	            </div>
-	            <div class="content-title font-weight-bold py-3">${requestScope.currentPost.postTitle}</div>
+	            <h1 class="font-weight-bold font-28 py-3">${requestScope.currentPost.postTitle}</h1>
 	            <div class="author mt-3">
 	                <img class="author-img border border-0 rounded-circle position-relative" src="<%=GlobalValues.profileImg %>${requestScope.adminInfo.adminImg}" alt="profile" style="top: -11px;"/>
 	                <div class="d-inline-block ml-2">
@@ -154,7 +154,7 @@
 			</c:when>
 			<c:otherwise>
 			<div class="text-center">
-				<h3>게시글이 존재하지 않습니다.</h3>
+				<div class="font-24">게시글이 존재하지 않습니다.</div>
 			</div>
 			</c:otherwise>
 	    </c:choose>

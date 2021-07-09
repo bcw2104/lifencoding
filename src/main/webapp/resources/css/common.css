@@ -1,25 +1,26 @@
 @charset "UTF-8";
 
+
 button, li {
-	cursor: pointer;
+	cursor: pointer
 }
 
 .text-dark-hover:hover {
-	color: #343a40 !important;
+	color: #343a40 !important
 }
 
 .btn-default {
-	background-color: #e4e4e4;
+	background-color: #e4e4e4
 }
 
 .btn-default:hover {
-	background-color: #cdcdcd;
+	background-color: #cdcdcd
 }
 
 .form-msg {
 	width: 100%;
 	margin-top: .25rem;
-	font-size: 80%;
+	font-size: 80%
 }
 
 .pager-item {
@@ -28,76 +29,90 @@ button, li {
 	text-align: center;
 	width: 35px;
 	height: 35px;
-	margin: 0 1px;
+	margin: 0 1px
 }
 
 .pager-item:hover, .pager-item-active {
 	border: 1px solid lightgray;
-	border-radius: 5px;
+	border-radius: 5px
 }
 
-.font-12{
-	font-size: 12px;
+.font-12 {
+	font-size: 12px
 }
 
-.font-13{
-	font-size: 13px;
+.font-13 {
+	font-size: 13px
 }
 
-.font-14{
-	font-size: 14px;
+.font-14 {
+	font-size: 14px
 }
 
-.font-15{
-	font-size: 15px;
+.font-15 {
+	font-size: 15px
 }
 
-.font-17{
-	font-size: 17px;
+.font-17 {
+	font-size: 17px
 }
 
-.font-18{
-	font-size: 18px;
+.font-18 {
+	font-size: 18px
 }
 
-@media screen and (max-width: 576px) {
+.font-20 {
+	font-size: 20px
+}
+
+.font-24 {
+	font-size: 24px
+}
+
+.font-28 {
+	font-size: 28px
+}
+
+.font-32 {
+	font-size: 32px
+}
+
+@media screen and (max-width:576px) {
 	.w-sm-100 {
-		width: 100% !important;
+		width: 100% !important
 	}
 	.w-sm-75 {
-		width: 75% !important;
+		width: 75% !important
 	}
 	.w-sm-50 {
-		width: 50% !important;
+		width: 50% !important
 	}
 	.w-sm-25 {
-		width: 20% !important;
+		width: 20% !important
 	}
 	.container {
-	    max-width: none !important;
-	    margin-left:0 !important;
-	    margin-right:0 !important;
-	    padding-left:0 !important;
-	    padding-right:0 !important;
+		max-width: none !important;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important
 	}
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width:768px) {
 	.w-md-100 {
-		width: 100% !important;
+		width: 100% !important
 	}
 	.w-md-75 {
-		width: 75% !important;
+		width: 75% !important
 	}
 	.w-md-50 {
-		width: 50% !important;
+		width: 50% !important
 	}
 	.w-md-25 {
-		width: 20% !important;
+		width: 20% !important
 	}
-
 	.container {
-	    max-width: none !important;
+		max-width: none !important
 	}
 }
-

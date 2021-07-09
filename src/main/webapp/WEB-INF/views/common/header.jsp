@@ -11,7 +11,7 @@
 	    <div class="modal-dialog">
 	        <div class="modal-content p-5">
 	            <div class="modal-header">
-	                <h1 class="modal-title">Login</h1>
+	                <div class="modal-title font-32">Login</div>
 	                <button type="button" class="close" data-dismiss="modal">&times;</button>
 	            </div>
 	            <div class="modal-body">
@@ -38,7 +38,7 @@
 	    <div class="modal-dialog">
 	        <div class="modal-content p-5">
 	            <div class="modal-header">
-	                <h1 class="modal-title">계정 찾기</h1>
+	                <div class="modal-title font-32">계정 찾기</div>
 	                <button type="button" class="close" data-dismiss="modal">&times;</button>
 	            </div>
 	            <div class="modal-body">

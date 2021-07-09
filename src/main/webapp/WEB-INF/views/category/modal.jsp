@@ -9,7 +9,7 @@
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">
-	                    <h1 class="modal-title">Category 생성</h1>
+	                    <div class="modal-title font-32">Category 생성</div>
 	                    <button type="button" class="close" data-dismiss="modal">&times;</button>
 	                </div>
 	                <div class="modal-body">
@@ -30,7 +30,7 @@
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">
-	                    <h1 class="modal-title">Sub Category 생성</h1>
+	                    <div class="modal-title font-32">Sub Category 생성</div>
 	                    <button type="button" class="close" data-dismiss="modal">&times;</button>
 	                </div>
 	                <div class="modal-body">
@@ -64,7 +64,7 @@
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">
-	                    <h1 class="modal-title">Category 수정</h1>
+	                    <div class="modal-title font-32">Category 수정</div>
 	                    <button type="button" class="close" data-dismiss="modal">&times;</button>
 	                </div>
 	                <div class="modal-body">
@@ -94,7 +94,7 @@
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">
-	                    <h1 class="modal-title">Sub Category 수정</h1>
+	                    <div class="modal-title font-32">Sub Category 수정</div>
 	                    <button type="button" class="close" data-dismiss="modal">&times;</button>
 	                </div>
 	                <div class="modal-body">
@@ -134,7 +134,7 @@
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">
-	                    <h1 class="modal-title">Category 삭제</h1>
+	                    <div class="modal-title font-32">Category 삭제</div>
 	                    <button type="button" class="close" data-dismiss="modal">&times;</button>
 	                </div>
 	                <div class="modal-body">
@@ -160,7 +160,7 @@
 	        <div class="modal-dialog">
 	            <div class="modal-content p-3">
 	                <div class="modal-header">
-	                    <h1 class="modal-title">Sub Category 삭제</h1>
+	                    <div class="modal-title font-32">Sub Category 삭제</div>
 	                    <button type="button" class="close" data-dismiss="modal">&times;</button>
 	                </div>
 	                <div class="modal-body">

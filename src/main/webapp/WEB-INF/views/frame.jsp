@@ -6,15 +6,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv='content-language' content='ko'>
+
 <meta name="viewport" content="width=device-width, initial-scale=1" >
 <meta name="naver-site-verification" content="cafe74f69dba36a0a355cc0abb68cbaa91d7cd9b" >
 <meta name="author" content="bcw2104">
 <meta name="keywords" content="Life & Coding,lifencoding,life,coding,blog,코딩,일상,블로그">
-<meta name="description" content="${requestScope.currentPost != null ? requestScope.postTumbnail : '일상과 배움을 기록하는 공간'}">
+<meta name="description" content="${requestScope.currentPost != null ? requestScope.postTumbnail : '일상과 배움을 기록하는 공간, bcw2104의 개인 블로그'}">
 
 <meta property="og:type" content="${requestScope.currentPost != null ? 'article':'website'}">
 <meta property="og:title" content="${requestScope.currentPost != null ? requestScope.currentPost.postTitle : 'Life & Coding'}">
-<meta property="og:description" content="${requestScope.currentPost != null ? requestScope.postTumbnail : '일상과 배움을 기록하는 공간'}" >
+<meta property="og:description" content="${requestScope.currentPost != null ? requestScope.postTumbnail : '일상과 배움을 기록하는 공간, bcw2104의 개인 블로그'}" >
 <meta property="og:image" content="<%=GlobalValues.link%>/resources/images/og_img.png">
 <meta property="og:site_name" content="Life & Coding">
 

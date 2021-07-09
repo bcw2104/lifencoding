@@ -14,7 +14,7 @@
 	    <div class="modal-dialog">
 	        <div class="modal-content p-5">
 	            <div class="modal-header">
-	                <h1 class="modal-title">비밀번호 변경</h1>
+	                <div class="modal-title font-24">비밀번호 변경</div>
 	                <button type="button" class="close" data-dismiss="modal">&times;</button>
 	            </div>
 	            <div class="modal-body">
@@ -42,7 +42,7 @@
 	    <div class="modal-dialog">
 	        <div class="modal-content p-5">
 	            <div class="modal-header">
-	                <h1 class="modal-title">이메일 변경</h1>
+	                <div class="modal-title font-24">이메일 변경</div>
 	                <button type="button" class="close" data-dismiss="modal">&times;</button>
 	            </div>
 	            <div class="modal-body">
@@ -70,7 +70,7 @@
 
 <div class="container my-5">
 	<div class="shadow">
-	    <h4 class="mb-5 bg-dark text-white p-3 head-font">마이페이지</h4>
+	    <h1 class="mb-5 bg-dark text-white p-3 head-font font-24">마이페이지</h1>
 	    <div class="row p-sm-5 p-3">
 	        <div class="col-lg-5 col-xl-4 mb-4 d-flex flex-column justify-content-center">
 	            <img src="<%=GlobalValues.profileImg %>${requestScope.admin.adminImg}" alt="profile" style="width: 150px; height: 150px" class="rounded-circle mb-4">

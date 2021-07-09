@@ -10,7 +10,7 @@
 
 <div class="container my-5">
 	<div class="shadow p-sm-5 p-3">
-	    <h4 class="mb-4">글 수정</h4>
+	    <h1 class="mb-4 font-24 head-font">글 수정</h1>
 	    <input type="hidden" id="page" value="modify"/>
 	    <form action="/post/${requestScope.currentPost.postId}/modify.do" method="post" id="postCreateForm" encType="multipart/form-data">
 	        <div class="form-group w-sm-100 w-50">

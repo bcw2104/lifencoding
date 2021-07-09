@@ -12,7 +12,7 @@
 
 <div class="container-fluid p-0 head-font">
 	<div class="banner position-relative bg-dark">
-		<h3 class="banner-title position-absolute text-white">일상과 배움을 기록하는 공간</h3>
+		<h1 class="banner-title position-absolute text-white font-28">일상과 배움을 기록하는 공간</h1>
    	</div>
 </div>
 
@@ -26,7 +26,7 @@
 				</div>
 				<div class="col-sm-1"></div>
 				<div class="col-8 col-sm-7 col-lg-12">
-					<h6>${requestScope.adminInfo.adminNickname }</h6>
+					<div class="font-18">${requestScope.adminInfo.adminNickname }</div>
 					<div class="mb-1 font-14">${requestScope.adminInfo.adminComment}</div>
 					<div class="font-14">
 						<a class="text-dark" href="https://mail.naver.com/write/popup/?orderType=new&to=bcw2104@gmail.com">Contact</a>
@@ -41,13 +41,13 @@
 					<div class="card">
 						<div class="card-body text-center">
 							<div class="card-title">전체 방문자 수</div>
-							<h2 class="text-primary">${requestScope.totalVisit}</h2>
+							<div class="text-primary font-32">${requestScope.totalVisit}</div>
 						</div>
 					</div>
 					<div class="card">
 						<div class="card-body text-center">
 							<div class="card-title">오늘 방문자 수</div>
-							<h2 class="text-primary">${requestScope.todayVisit}</h2>
+							<div class="text-primary font-32">${requestScope.todayVisit}</div>
 						</div>
 					</div>
 				</div>
@@ -57,7 +57,7 @@
 		<div class="col-lg-1"></div>
 		<div class="col-lg-7 p-2">
 			<div class="content-hot">
-		    	<h5 class="mb-2 bg-dark text-white p-2 head-font">인기 글</h5>
+		    	<div class="mb-2 bg-dark text-white p-2 head-font font-20">인기 글</div>
 				<c:forEach items="${requestScope.hotPostList}" var="n">
 				<div class="post-item my-4 d-flex pl-2">
 					<div class="p-0 flex-fill d-flex flex-column justify-content-between">
@@ -89,7 +89,7 @@
 				</c:forEach>
 		    </div>
 			<div class="content-recent mt-5">
-				<h5 class="mb-2 bg-dark text-white p-2 head-font">최신 글</h5>
+				<div class="mb-2 bg-dark text-white p-2 head-font font-20">최신 글</div>
 				<c:forEach items="${requestScope.postList}" var="n">
 				<div class="post-item my-4 d-flex pl-2">
 					<div class="p-0 flex-fill d-flex flex-column justify-content-between">
