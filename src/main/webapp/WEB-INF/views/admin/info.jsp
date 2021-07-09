@@ -14,7 +14,7 @@
 	    <div class="modal-dialog">
 	        <div class="modal-content p-5">
 	            <div class="modal-header">
-	                <div class="modal-title font-24">비밀번호 변경</div>
+	                <div class="modal-title font-28">비밀번호 변경</div>
 	                <button type="button" class="close" data-dismiss="modal">&times;</button>
 	            </div>
 	            <div class="modal-body">
@@ -42,7 +42,7 @@
 	    <div class="modal-dialog">
 	        <div class="modal-content p-5">
 	            <div class="modal-header">
-	                <div class="modal-title font-24">이메일 변경</div>
+	                <div class="modal-title font-28">이메일 변경</div>
 	                <button type="button" class="close" data-dismiss="modal">&times;</button>
 	            </div>
 	            <div class="modal-body">

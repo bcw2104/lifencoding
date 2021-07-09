@@ -38,7 +38,7 @@
 	    <div class="modal-dialog">
 	        <div class="modal-content p-5">
 	            <div class="modal-header">
-	                <div class="modal-title font-32">계정 찾기</div>
+	                <div class="modal-title font-28">계정 찾기</div>
 	                <button type="button" class="close" data-dismiss="modal">&times;</button>
 	            </div>
 	            <div class="modal-body">
