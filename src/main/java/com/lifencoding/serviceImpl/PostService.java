@@ -137,7 +137,7 @@ public class PostService implements ContentServiceImpl<PostVO>{
 		return reply;
 	}
 
-	public boolean changeUploadDir(int postId) throws Exception {
+	public void changeUploadDir(int postId) throws Exception {
 		FTPClient client = manager.connect();
 		FileTools fileTools = new FileTools(client);
 
@@ -145,9 +145,10 @@ public class PostService implements ContentServiceImpl<PostVO>{
 
 		boolean reply = fileTools.rename(path+File.separator+"temp",path+File.separator+postId);
 
+		if(!reply) {
+			fileTools.createDirectorys(path+File.separator+postId);
+		}
 		manager.disconnect(client);
-
-		return reply;
 	}
 
 	public void deleteThumbnail(int postId) throws Exception {

@@ -41,15 +41,15 @@ public class PostController {
 	}
 
 	@GetMapping("{postId}/edit")
-	public String edit(@PathVariable("postId") String _postId,Model model) throws Exception {
+	public String edit(@PathVariable("postId") String _postId, Model model) throws Exception {
 		postService.deleteImgFile(0);
 
 		PostVO postVO = new PostVO();
 		postVO.setPostId(Integer.parseInt(_postId));
 		postVO = postService.get(postVO);
 
-		model.addAttribute("currentPost",postVO);
-		model.addAttribute("content",GlobalValues.postModify);
+		model.addAttribute("currentPost", postVO);
+		model.addAttribute("content", GlobalValues.postModify);
 
 		return "forward:/";
 	}
@@ -65,68 +65,16 @@ public class PostController {
 
 		int postId = postService.getNextPostId();
 
-		if(postService.changeUploadDir(postId)) {
-			if(!thumbnail.isEmpty()) {
-				String extension = FilenameUtils.getExtension(thumbnail.getOriginalFilename());
+		postService.changeUploadDir(postId);
+		if(!thumbnail.isEmpty()) {
+			String extension = FilenameUtils.getExtension(thumbnail.getOriginalFilename());
 
-				if(extension.equals("jpg") || extension.equals("jpeg") || extension.equals("png")
-						|| extension.equals("bmp") || extension.equals("svg")){
-					String fileName = "thumbnail."+ extension;
-					postService.uploadImg(postId, "thumbnail", fileName, thumbnail);
-					postVO.setThumbnail(fileName);
-				}
+			if(extension.equals("jpg") || extension.equals("jpeg") || extension.equals("png")
+					|| extension.equals("bmp") || extension.equals("svg")){
+				String fileName = "thumbnail."+ extension;
+				postService.uploadImg(postId, "thumbnail", fileName, thumbnail);
+				postVO.setThumbnail(fileName);
 			}
-
-			int categoryId = Integer.parseInt(_categoryId);
-			postVO.setPostId(postId);
-			postVO.setPostTitle(title);
-			postVO.setPostContent(content.replace("post"+File.separator+"temp", "post"+File.separator+postId));
-			postVO.setCategoryId(categoryId);
-
-			postService.add(postVO);
-
-			categoryVO.setCategoryId(categoryId);
-			categoryVO = subCategoryService.get(categoryVO);
-
-			return "redirect:/"+categoryVO.getCategoryEn()+"/"+postVO.getPostId();
-		}
-		else {
-			response.sendError(500);
-			return null;
-		}
-	}
-
-	@PostMapping("/{postId}/modify.do")
-	public String modify(@RequestParam("categoryId") String _categoryId,
-						@PathVariable("postId") String _postId,
-						@RequestParam("title") String title,
-						@RequestParam("content") String content,
-						@RequestParam(name = "thumbnailCk",required = false) String thumbnailCk,
-						@RequestParam MultipartFile thumbnail,Model model,HttpServletResponse response) throws Exception {
-
-		PostVO postVO = new PostVO();
-		CategoryVO categoryVO = new CategoryVO();
-
-		int postId = Integer.parseInt(_postId);
-		postVO.setPostId(postId);
-		postVO = postService.get(postVO);
-
-		if(thumbnailCk == null) {
-			if(!thumbnail.isEmpty()) {
-				postService.deleteThumbnail(postId);
-
-				String extension = FilenameUtils.getExtension(thumbnail.getOriginalFilename());
-
-				if(extension.equals("jpg") || extension.equals("jpeg") || extension.equals("png")
-						|| extension.equals("bmp") || extension.equals("svg")){
-					String fileName = "thumbnail."+ extension;
-					postService.uploadImg(postId, "thumbnail", fileName, thumbnail);
-					postVO.setThumbnail(fileName);
-				}
-			}
-		}else {
-			postService.deleteThumbnail(postId);
-			postVO.setThumbnail("");
 		}
 
 		int categoryId = Integer.parseInt(_categoryId);
@@ -135,12 +83,58 @@ public class PostController {
 		postVO.setPostContent(content.replace("post"+File.separator+"temp", "post"+File.separator+postId));
 		postVO.setCategoryId(categoryId);
 
-		postService.modify(postVO);
+		postService.add(postVO);
 
 		categoryVO.setCategoryId(categoryId);
 		categoryVO = subCategoryService.get(categoryVO);
 
 		return "redirect:/"+categoryVO.getCategoryEn()+"/"+postVO.getPostId();
+
+	}
+
+	@PostMapping("/{postId}/modify.do")
+	public String modify(@RequestParam("categoryId") String _categoryId, @PathVariable("postId") String _postId,
+			@RequestParam("title") String title, @RequestParam("content") String content,
+			@RequestParam(name = "thumbnailCk", required = false) String thumbnailCk,
+			@RequestParam MultipartFile thumbnail, Model model, HttpServletResponse response) throws Exception {
+
+		PostVO postVO = new PostVO();
+		CategoryVO categoryVO = new CategoryVO();
+
+		int postId = Integer.parseInt(_postId);
+		postVO.setPostId(postId);
+		postVO = postService.get(postVO);
+
+		if (thumbnailCk == null) {
+			if (!thumbnail.isEmpty()) {
+				postService.deleteThumbnail(postId);
+
+				String extension = FilenameUtils.getExtension(thumbnail.getOriginalFilename());
+
+				if (extension.equals("jpg") || extension.equals("jpeg") || extension.equals("png")
+						|| extension.equals("bmp") || extension.equals("svg")) {
+					String fileName = "thumbnail." + extension;
+					postService.uploadImg(postId, "thumbnail", fileName, thumbnail);
+					postVO.setThumbnail(fileName);
+				}
+			}
+		} else {
+			postService.deleteThumbnail(postId);
+			postVO.setThumbnail("");
+		}
+
+		int categoryId = Integer.parseInt(_categoryId);
+		postVO.setPostId(postId);
+		postVO.setPostTitle(title);
+		postVO.setPostContent(content.replace("post" + File.separator + "temp", "post" + File.separator + postId));
+		postVO.setCategoryId(categoryId);
+
+		postService.modify(postVO);
+
+		categoryVO.setCategoryId(categoryId);
+		categoryVO = subCategoryService.get(categoryVO);
+
+		return "redirect:/" + categoryVO.getCategoryEn() + "/" + postVO.getPostId();
 	}
 
 	@GetMapping("/{postId}/delete.do")
@@ -160,16 +154,16 @@ public class PostController {
 		categoryVO.setCategoryId(postVO.getCategoryId());
 		categoryVO = subCategoryService.get(categoryVO);
 
-		return "redirect:/"+categoryVO.getCategoryEn();
+		return "redirect:/" + categoryVO.getCategoryEn();
 	}
 
 	@SuppressWarnings("unchecked")
 	@PostMapping("uploadImgTemp.do")
-	public void uploadImg(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam MultipartFile upload) throws Exception {
+	public void uploadImg(HttpServletRequest request, HttpServletResponse response, @RequestParam MultipartFile upload)
+			throws Exception {
 
 		int postId = 0;
-		if(request.getHeader("Referer").endsWith("edit")) {
+		if (request.getHeader("Referer").endsWith("edit")) {
 			postId = Integer.parseInt(request.getHeader("Referer").split("/")[4]);
 		}
 		response.setCharacterEncoding("utf-8");
@@ -177,10 +171,10 @@ public class PostController {
 
 		String extension = FilenameUtils.getExtension(upload.getOriginalFilename());
 
-		if(extension.equals("jpg") || extension.equals("jpeg") || extension.equals("png")
-				|| extension.equals("bmp") || extension.equals("svg")) {
+		if (extension.equals("jpg") || extension.equals("jpeg") || extension.equals("png") || extension.equals("bmp")
+				|| extension.equals("svg")) {
 			String uuid = UUID.randomUUID().toString();
-			String fileName = uuid + "."+ extension;
+			String fileName = uuid + "." + extension;
 			String url = postService.uploadImg(postId, "inner", fileName, upload);
 
 			JSONObject object = new JSONObject();
@@ -190,8 +184,7 @@ public class PostController {
 			object.put("url", url);
 
 			response.getWriter().write(object.toJSONString());
-		}
-		else {
+		} else {
 			response.getWriter().write("<script>alert('사진의 확장자는 svg,bmp,png,jpg,jpeg만 가능합니다.')</script>");
 		}
 
