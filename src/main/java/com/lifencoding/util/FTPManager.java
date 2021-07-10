@@ -18,12 +18,12 @@ public class FTPManager {
 		this.password = password;
 	}
 
+
 	public FTPClient connect() {
 		FTPClient client = new FTPClient();
 		client.setControlEncoding("UTF-8");
 
 		FTPClientConfig config = new FTPClientConfig();
-		config.setServerTimeZoneId("Asia/Seoul");
 		client.configure(config);
 
 		try {
