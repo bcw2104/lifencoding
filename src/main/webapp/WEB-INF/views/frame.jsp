@@ -20,6 +20,8 @@
 <meta property="og:image" content="<%=GlobalValues.link%>/resources/images/og_img.png">
 <meta property="og:site_name" content="Life & Coding">
 
+<title>${requestScope.currentPost != null ? requestScope.currentPost.postTitle+=' | Life & Coding' : 'Life & Coding | 일상과 배움을 기록하는 공간'}</title>
+
 <link rel="icon" type="image/png" sizes="16x16" href="<%=GlobalValues.link%>/resources/images/favicon.png">
 
 <!-- Bootstrap4 -->
@@ -30,8 +32,6 @@
 
 <link rel="stylesheet" href="/resources/css/common-min.css">
 <link rel="stylesheet" href="/resources/css/font-min.css">
-
-<title>${requestScope.currentPost != null ? requestScope.currentPost.postTitle : 'Life & Coding'}</title>
 </head>
 
 <body style="background-color: rgb(250, 250, 250)" class="body-font">
