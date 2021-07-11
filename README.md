@@ -3,16 +3,14 @@
 
 URL : http://www.lifencoding.com
 
-# 관련 기술
-
-Backend
+# Backend
 - Spring Framework
 - Java
 - MariaDB
 
-Frontend
+# Frontend
 - Bootstrap4
-- jquery
+- Jquery
 
 
 
