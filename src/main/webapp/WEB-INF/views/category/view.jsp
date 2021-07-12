@@ -10,7 +10,7 @@
         <span class="navbar-brand m-0">Category</span>
         <c:if test="${sessionScope.admin}">
             <div class="dropdown-custom dropdown d-inline-block">
-                <button type="button" class="btn btn-dark" data-toggle="dropdown" style="width: 50px">
+                <button type="button" class="btn btn-dark p-2" data-toggle="dropdown" style="width: 50px">
                     <img class="w-100" alt="setting" src="<%=GlobalValues.link%>/resources/images/icon_setting.png" />
                 </button>
                 <div class="dropdown-menu bg-dark p-0 text-center">
