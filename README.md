@@ -3,12 +3,12 @@
 
 URL : http://www.lifencoding.com
 
-### Backend
+### Back-end
 - Spring Framework
 - Java
 - MariaDB
 
-### Frontend
+### Front-end
 - Bootstrap4
 - Jquery
 
