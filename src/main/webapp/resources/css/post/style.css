@@ -1,29 +1,28 @@
 @charset "UTF-8";
 
-.author{
+.author {
 	line-height: 40px;
 }
 
-.author-img{
-	width:40px;
+.author-img {
+	width: 40px;
 	height: 40px;
-   	margin-right: 5px;
+	margin-right: 5px;
 }
 
-.content-post{
+.content-post {
 	min-height: 500px
 }
 
-.content-post img{
-    max-width: 100% !important;
-    height: auto !important;
+.content-post img {
+	max-width: 100% !important;
+	height: auto !important;
 }
 
-.content-post a{
+.content-post a {
 	word-break: break-all;
 }
 
-.content-comment{
+.content-comment {
 	font-size: 13px;
 }
-

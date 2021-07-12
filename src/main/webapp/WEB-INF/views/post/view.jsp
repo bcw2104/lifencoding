@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="/resources/css/post/style-min.css">
 
 <script src="/resources/javascript/post/ui-action-min.js"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 <c:set var="maxPage" value="${requestScope.postCount%10 > 0 ? requestScope.postCount/10+1 : requestScope.postCount/10}" ></c:set>
 <c:set var="now" value="<%=new java.util.Date()%>" />
@@ -92,7 +93,7 @@
 	            <div class="mb-3">
 	                <a class="text-dark font-weight-bold" href="/${requestScope.currentPost.categoryEn}">${requestScope.currentPost.categoryName}</a>
 	            </div>
-	            <h1 class="font-weight-bold font-28 py-3">${requestScope.currentPost.postTitle}</h1>
+	            <h1 id="postTitle" class="font-weight-bold font-28 py-3">${requestScope.currentPost.postTitle}</h1>
 	            <div class="author mt-3">
 	                <img class="author-img border border-0 rounded-circle position-relative" src="<%=GlobalValues.profileImg %>${requestScope.adminInfo.adminImg}" alt="profile" style="top: -11px;"/>
 	                <div class="d-inline-block ml-2">
@@ -107,8 +108,13 @@
 	        <hr />
 	        <div class="content-body mt-3 mb-5">
 	            <div class="content-post" style="overflow: auto;">${requestScope.currentPost.postContent}</div>
-	            <c:if test="${sessionScope.admin}">
 	            <div class="text-right font-16 mt-5">
+	            	<a id="btnTwitter" class="btn px-1" onclick="shareTwitter();"><img src="<%=GlobalValues.link%>/resources/images/icon_twitter.png"></a>
+					<a id="btnFacebook" class="btn px-1" onclick="shareFacebook();"><img src="<%=GlobalValues.link%>/resources/images/icon_facebook.png"></a>
+					<a id="btnKakao" class="btn px-1"><img src="<%=GlobalValues.link%>/resources/images/icon_kakao.png"></a>
+	            </div>
+	            <c:if test="${sessionScope.admin}">
+	            <div class="text-right font-16 mt-3">
 	            	<a class="text-secondary" href="/post/${requestScope.currentPost.postId}/edit">수정</a>
 	            	<span class="text-secondary mx-2">|</span>
 	            	<a class="text-secondary" href="/post/${requestScope.currentPost.postId}/delete.do">삭제</a>
