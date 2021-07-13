@@ -106,9 +106,9 @@
 	            </div>
 	        </div>
 	        <hr />
-	        <div class="content-body mt-3 mb-5">
+	        <div class="content-body my-3">
 	            <div class="content-post" style="overflow: auto;">${requestScope.currentPost.postContent}</div>
-	            <div class="text-right mt-5">
+	            <div class="text-right mt-5 pr-2">
 	            	<a class="btn px-0" onclick="shareToggler();"><img src="<%=GlobalValues.link%>/resources/images/icon_share.jpg" style="width: 20px;"></a>
 	            </div>
 	            <div id="shareTab" class="text-right d-none">
@@ -118,7 +118,7 @@
 					<a id="btnNaver" class="btn px-0" onclick="shareNaver();"><img src="<%=GlobalValues.link%>/resources/images/icon_naver.png" style="width: 35px;"></a>
 	            </div>
 	            <c:if test="${sessionScope.admin}">
-	            <div class="text-right font-16 mt-3">
+	            <div class="text-right font-16 mt-3 pr-2">
 	            	<a class="text-secondary" href="/post/${requestScope.currentPost.postId}/edit">수정</a>
 	            	<span class="text-secondary mx-2">|</span>
 	            	<a id="postDeleteBtn" class="text-secondary" href="/post/${requestScope.currentPost.postId}/delete.do">삭제</a>
