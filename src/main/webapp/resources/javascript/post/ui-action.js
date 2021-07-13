@@ -6,12 +6,12 @@ function hidePostList() {
 		$("#postToggler").text("펼치기")
 }
 
-function shareToggler(){
+function shareToggler() {
 	$("#shareTab").toggleClass("d-none");
 }
 
 function shareTwitter() {
-	var sendText =$("#postTitle").text();
+	var sendText = $("#postTitle").text();
 	var sendUrl = location.href;
 	window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl);
 }
@@ -47,4 +47,9 @@ function shareNaver() {
 
 $(document).ready(function() {
 	shareKakao();
+
+	$("#postDeleteBtn").click(function() {
+		var ans = confirm("포스트를 삭제하시겠습니까?");
+		return ans;
+	});
 });

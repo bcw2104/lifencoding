@@ -121,7 +121,7 @@
 	            <div class="text-right font-16 mt-3">
 	            	<a class="text-secondary" href="/post/${requestScope.currentPost.postId}/edit">수정</a>
 	            	<span class="text-secondary mx-2">|</span>
-	            	<a class="text-secondary" href="/post/${requestScope.currentPost.postId}/delete.do">삭제</a>
+	            	<a id="postDeleteBtn" class="text-secondary" href="/post/${requestScope.currentPost.postId}/delete.do">삭제</a>
 	            </div>
 	            </c:if>
 	        </div>
