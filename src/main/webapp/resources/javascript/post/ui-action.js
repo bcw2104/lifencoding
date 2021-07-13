@@ -46,7 +46,9 @@ function shareNaver() {
 }
 
 $(document).ready(function() {
-	shareKakao();
+	if ($("#btnKakao").length == 1) {
+		shareKakao();
+	}
 
 	$("#postDeleteBtn").click(function() {
 		var ans = confirm("포스트를 삭제하시겠습니까?");
