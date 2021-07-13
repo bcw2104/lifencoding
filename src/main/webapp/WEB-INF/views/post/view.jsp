@@ -109,13 +109,13 @@
 	        <div class="content-body mt-3 mb-5">
 	            <div class="content-post" style="overflow: auto;">${requestScope.currentPost.postContent}</div>
 	            <div class="text-right mt-5">
-	            	<a class="btn px-0" onclick="shareToggler();"><img src="<%=GlobalValues.link%>/resources/images/icon_share.jpg"></a>
+	            	<a class="btn px-0" onclick="shareToggler();"><img src="<%=GlobalValues.link%>/resources/images/icon_share.jpg" style="width: 20px;"></a>
 	            </div>
 	            <div id="shareTab" class="text-right d-none">
-	            	<a id="btnTwitter" class="btn px-0" onclick="shareTwitter();"><img src="<%=GlobalValues.link%>/resources/images/icon_twitter.png"></a>
-					<a id="btnFacebook" class="btn px-0" onclick="shareFacebook();"><img src="<%=GlobalValues.link%>/resources/images/icon_facebook.png"></a>
-					<a id="btnKakao" class="btn px-0"><img src="<%=GlobalValues.link%>/resources/images/icon_kakao.png"></a>
-					<a id="btnNaver" class="btn px-0" onclick="shareNaver();"><img src="<%=GlobalValues.link%>/resources/images/icon_naver.png"></a>
+	            	<a id="btnTwitter" class="btn px-0" onclick="shareTwitter();"><img src="<%=GlobalValues.link%>/resources/images/icon_twitter.png" style="width: 35px;"></a>
+					<a id="btnFacebook" class="btn px-0" onclick="shareFacebook();"><img src="<%=GlobalValues.link%>/resources/images/icon_facebook.png" style="width: 35px;"></a>
+					<a id="btnKakao" class="btn px-0"><img src="<%=GlobalValues.link%>/resources/images/icon_kakao.png" style="width: 35px;"></a>
+					<a id="btnNaver" class="btn px-0" onclick="shareNaver();"><img src="<%=GlobalValues.link%>/resources/images/icon_naver.png" style="width: 35px;"></a>
 	            </div>
 	            <c:if test="${sessionScope.admin}">
 	            <div class="text-right font-16 mt-3">
