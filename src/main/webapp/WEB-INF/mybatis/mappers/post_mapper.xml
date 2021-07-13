@@ -21,14 +21,14 @@
 	<choose>
 		<when test="start != 0">
 			SELECT * FROM
-				(SELECT @rownum:=@rownum+1 AS rnum,sorted_tbl.*
+				(SELECT @rownum:=@rownum+1 AS rnum,tmp1.*
 				FROM (SELECT * FROM post_tbl
 					<where>
 						<if test="postId != 0">post_id = #{postId}</if>
 						<if test="postTitle != null">AND post_title LIKE '%${postTitle}%'</if>
 						<if test="categoryId != 0">AND category_id = #{categoryId}</if>
 					</where>
-					) sorted_tbl,(SELECT @rownum:=0) tmp ORDER BY post_date desc) result_tbl NATURAL JOIN subcategory_tbl
+					) tmp1,(SELECT @rownum:=0) tmp2 ORDER BY post_date desc) result_tbl NATURAL JOIN subcategory_tbl
 		 	WHERE rnum &gt;= #{start} AND rnum &lt;= #{end} ORDER BY rnum
 		</when>
 		<otherwise>
