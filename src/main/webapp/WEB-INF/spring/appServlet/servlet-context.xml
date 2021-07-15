@@ -40,8 +40,8 @@
 			<mapping path="/admin/code.do"/>
 			<mapping path="/admin/confirm.do"/>
 			<mapping path="/admin/changeImg.do"/>
-			<mapping path="/category/*"/>
-			<mapping path="/post/*"/>
+			<mapping path="/category/**"/>
+			<mapping path="/post/**"/>
 			<beans:ref bean="authCheckInterceptor"/>
 		</interceptor>
 
